@@ -13,6 +13,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TipoSospensioneDTO {
 
-    private Integer id;
-    private String tipoSospensione;
+	private Integer id;
+	private String nome;
 }

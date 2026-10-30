@@ -13,6 +13,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MarcaDTO {
 
-    private Integer id;
-    private String marca;
+	private Integer id;
+	private String nome;
 }
