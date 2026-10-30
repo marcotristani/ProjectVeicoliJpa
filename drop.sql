@@ -11,17 +11,17 @@
 
     drop table if exists freni cascade;
 
+    drop table if exists full_veicolo cascade;
+
     drop table if exists macchine cascade;
 
     drop table if exists marche cascade;
-
-    drop table if exists modelli cascade;
 
     drop table if exists moto cascade;
 
     drop table if exists sospensioni cascade;
 
-    drop table if exists targhe cascade;
+    drop table if exists tipo_sospensioni cascade;
 
     drop table if exists tipo_veicoli cascade;
 

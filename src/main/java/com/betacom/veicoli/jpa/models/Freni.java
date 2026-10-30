@@ -17,7 +17,8 @@ public class Freni {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idFreno;
+	private Integer id;
+	
 	
 	@Column(
 			name = "tipo_freno",

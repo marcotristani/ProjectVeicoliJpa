@@ -17,9 +17,10 @@ public class Moto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idMoto;
+	private Integer id;
+	
 	private Integer idVeicolo;
-	private Integer idTarga;
+	private String targa;
 	
 	@Column(
 			name = "cc",

@@ -13,11 +13,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "marche")
-public class Marche {
+public class Marca {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idMarca;
+	private Integer id;
 	
 	@Column(
 			name = "nome_marca",

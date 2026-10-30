@@ -12,16 +12,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "categorie")
-public class Categorie {
+@Table(name = "alimentazioni")
+public class TipoAlimentazione {
+	
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idCategoria;
+	private Integer id;
 	
 	@Column(
-			name = "tipo_categoria",
+			name = "nome_alimentazione",
 			nullable = false
 			)
-	private String tipo;
+	private String nome;
+	
+	@Column(
+			name = "pattern",
+			nullable = false
+			)
+	private String pattern;
+	
 }

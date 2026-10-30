@@ -12,16 +12,28 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "modelli")
-public class Modelli {
+@Table(name = "tipo_sospensioni")
+public class TipoSospensione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idModello;
+	private Integer id;
 	
 	@Column(
-			name = "nome_modello",
+			name = "nome_sospensione",
 			nullable = false
 			)
 	private String nome;
+	
+	@Column(
+			name = "status",
+			nullable = false
+			)
+	private Boolean status;
+	
+	@Column(
+			name = "pattern",
+			nullable = false
+			)
+	private String pattern;
 }

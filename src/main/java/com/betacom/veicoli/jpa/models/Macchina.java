@@ -9,18 +9,30 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
-@Table(name = "tipo_veicoli")
-public class TipoVeicoli{
+@Table(name = "macchine")
+public class Macchina {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idTipoVeicolo;
+	private Integer id;
+	
+	private Integer idVeicolo;
+	private String Targa;  
+	
 	@Column(
-			name = "tipo_veicolo",
+			name = "cc",
 			nullable = false
 			)
-	private String tipo;
+	private Integer cc; 
+	
+	@Column(
+			name = "n_porte",
+			nullable = false
+			)
+	private Integer porte;
+
 }

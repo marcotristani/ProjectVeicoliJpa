@@ -20,7 +20,7 @@ public class Bici {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idBici;
+	private Integer id;
 	
 	@Column(
 			name = "n_marce",
