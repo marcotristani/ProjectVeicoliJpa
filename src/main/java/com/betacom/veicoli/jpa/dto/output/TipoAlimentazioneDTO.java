@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoAlimentazioneDTO {
-	  private Integer id;
-	    private String tipo;
+	private String pattern;
+	private Integer id;
+	private String nome;
 }

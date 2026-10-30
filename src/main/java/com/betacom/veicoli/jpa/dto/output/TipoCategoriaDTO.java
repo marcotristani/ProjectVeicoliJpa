@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoCategoriaDTO {
+	private String pattern;
 	private Integer id;
-    private String categoria;
+	private String nome;
 }

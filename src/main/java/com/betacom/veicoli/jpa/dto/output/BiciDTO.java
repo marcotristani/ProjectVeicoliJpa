@@ -14,9 +14,8 @@ import lombok.Setter;
 public class BiciDTO {
 	
 	private Integer id;
-	private Integer idVeicolo;
+	private Integer idTipoSospensione;
 	private Integer numeroMarce;
 	private Boolean pieghevole;
-	private String tipoSospensione;
-	private String tipoFreni;
+	private Integer idVeicolo;
 }

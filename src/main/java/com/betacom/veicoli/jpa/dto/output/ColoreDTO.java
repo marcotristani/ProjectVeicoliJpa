@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ColoreDTO {
 
-    private Integer id;
-    private String colore;
+	private Integer id;
+	private String nome;
 }
 

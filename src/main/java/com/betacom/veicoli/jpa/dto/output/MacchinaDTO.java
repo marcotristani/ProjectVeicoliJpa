@@ -13,10 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MacchinaDTO {
 
-    private Integer id;
-    private Integer idVeicolo;
-    private Integer numeroPorte;
-    private String targa;
-    private String categoria;
-    private String alimentazione;
+	private Integer id;
+	private String targa;
+	private Integer numeroPorte;
+	private Integer idVeicolo;
+	private Integer cc;
+
 }

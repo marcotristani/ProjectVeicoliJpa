@@ -12,9 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MotoDTO {
-	 private Integer id;
-	    private Integer idVeicolo;
-	    private Integer cc;
-	    private String targa;
-	    private String alimentazione;
+	private Integer id;
+	private String targa;
+	private Integer cc;
+	private Integer idVeicolo;
 }
