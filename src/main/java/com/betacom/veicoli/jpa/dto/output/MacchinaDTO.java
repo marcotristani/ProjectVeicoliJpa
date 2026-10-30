@@ -1,0 +1,22 @@
+package com.betacom.veicoli.jpa.dto.output;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class MacchinaDTO {
+
+    private Integer id;
+    private Integer idVeicolo;
+    private Integer numeroPorte;
+    private String targa;
+    private String categoria;
+    private String alimentazione;
+}
