@@ -19,8 +19,6 @@
 
     drop table if exists moto cascade;
 
-    drop table if exists sospensioni cascade;
-
     drop table if exists tipo_sospensioni cascade;
 
     drop table if exists tipo_veicoli cascade;
