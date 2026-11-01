@@ -13,19 +13,19 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FullVeicoloDTO {
 
-    private Integer id;
-    private String tipo;
-    private Integer numeroRuote;
-    private String categ;
-    private String alim;
-    private String colore;
-    private String marca;
-    private String modello;
-    private Integer annoProduzione;
-    private Integer numeroPorte;
-    private Integer numeroMarce;
-    private Boolean pieghevole;
-    private String tipoSospensione;
-    private String targa;
-    private Integer cc;
+	private Integer id;
+	private String tipo;
+	private Integer numeroRuote;
+	private String categ;
+	private String alim;
+	private String colore;
+	private String marca;
+	private String modello;
+	private Integer annoProduzione;
+	private Integer numeroPorte;
+	private Integer numeroMarce;
+	private Boolean pieghevole;
+	private String tipoSospensione;
+	private String targa;
+	private Integer cc;
 }

@@ -1,5 +1,6 @@
 package com.betacom.veicoli.jpa.services.interfaces;
 
+import com.betacom.veicoli.jpa.dto.input.BiciReq;
 
 public interface IBiciService {
 	void create(BiciReq req) throws Exception;

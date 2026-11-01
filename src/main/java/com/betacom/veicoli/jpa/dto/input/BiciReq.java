@@ -10,15 +10,22 @@ import lombok.ToString;
 @Getter
 @ToString
 public class BiciReq {
-	@NotNull(groups = ValidationGroup.Update.class, message = "veicoli-no-id" )
+	@NotNull(groups = ValidationGroup.Update.class, message = "bici-no-id" )
 	private Integer id;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "tipo-no-id")
-	private Integer idTipoVeicolo;@NotNull(groups = ValidationGroup.Update.class, message = "veicoli-no-id" )
-	private Integer id;
+	@NotNull(groups = ValidationGroup.Create.class, message = "tipososp-no-id")
+	@NotBlank(groups = ValidationGroup.Create.class, message = "tipososp-no-id")
+	private Integer idTipoSospensione;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "tipo-no-id")
-	private Integer idTipoVeicolo;
+	@NotNull(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
+	@NotBlank(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
+	private Integer numeroMarce;
+	
+	private Boolean pieghevole;
+	
+	@NotNull(groups = ValidationGroup.Create.class, message = "veicoli-no-id")
+	@NotBlank(groups = ValidationGroup.Create.class, message = "veicoli-no-id")
+	private Integer idVeicolo;
+	
+	
 }

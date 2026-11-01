@@ -1,4 +1,4 @@
-package com.betacom.exceptions;
+package com.betacom.veicoli.jpa.exceptions;
 
 public class AcademyException extends RuntimeException{
 	public AcademyException() {

@@ -13,5 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FreniDTO {
 	private Integer id;
-    private String tipoFreni;
+    private String tipo;
 }

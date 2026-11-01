@@ -1,5 +1,7 @@
 package com.betacom.veicoli.jpa.dto.output;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,13 +14,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VeicoliDTO {
-	private Integer id;
-    private String tipo;
-    private Integer numeroRuote;
-    private String categ;
-    private String alim;
-    private String colore;
-    private String marca;
-    private String modello;
-    private Integer annoProduzione;
+	private Integer  id;
+	private Integer  idTipoVeicolo;
+	private String   tipoCategoriaPattern;
+	private Integer  tipoCategoriaId;
+	private Integer  idMarca;
+	private String   modello;
+	private String   TipoAlimentazionePattern;
+	private Integer  TipoAlimentazioneId;
+	private Integer  idColore;
+	private Integer  annoProduzione;
+	private LocalDateTime   data_inserimento;
+	private Integer  numeroRuote;
 }
