@@ -1,5 +1,6 @@
 package com.betacom.veicoli.jpa.services.implementations;
 
+import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -90,6 +91,7 @@ public class VeicoliImpl implements IVeicoliService{
 		return null;
 	}
 
-	
 
+   
+	
 }

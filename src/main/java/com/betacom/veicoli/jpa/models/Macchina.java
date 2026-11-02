@@ -1,6 +1,7 @@
 
 package com.betacom.veicoli.jpa.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +24,6 @@ public class Macchina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private Integer idVeicolo;
-	private String Targa;  
 	
 	@Column(
 			name = "cc",
@@ -44,5 +43,20 @@ public class Macchina {
 			referencedColumnName = "id"
 			)
 	private Veicoli veicolo;
+	
+	// OWNER della targa: colonna targa_id in questa tabella.
+	// nullable = false -> niente NULL | unique -> una targa appartiene a un solo veicolo
+	// cascade REMOVE + orphanRemoval -> cancellando la macchina/moto si cancella anche la sua targa
+	@OneToOne(
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true
+			)
+	@JoinColumn(
+			name = "targa_id",
+			referencedColumnName = "id",
+			nullable = false,
+			unique = true
+			)
+	private Targa targa;
 
 }
