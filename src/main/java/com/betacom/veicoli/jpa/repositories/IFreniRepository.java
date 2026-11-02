@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.betacom.veicoli.jpa.models.Freni;
 
 public interface IFreniRepository extends JpaRepository<Freni, Integer> {
-	
+    boolean existsByTipo(String tipo);
 }
