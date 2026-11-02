@@ -6,4 +6,5 @@ import com.betacom.veicoli.jpa.models.Colore;
 
 public interface IColoreRepository extends JpaRepository<Colore, Integer>{
 
+	boolean existsByNome (String nomeColore);
 }
