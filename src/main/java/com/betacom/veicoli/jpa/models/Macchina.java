@@ -1,3 +1,4 @@
+
 package com.betacom.veicoli.jpa.models;
 
 import jakarta.persistence.Column;
