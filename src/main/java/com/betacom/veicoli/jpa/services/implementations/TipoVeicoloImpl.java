@@ -27,6 +27,8 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	@Override
 	public void create(TipoVeicoloReq req) throws Exception {
 		log.debug("create {}", req);
+		if (tipoVeicoloRepository.existsByTipo(req.getNome()))
+			throw new AcademyException("tipoVeicolo-fnd");
 
 		TipoVeicolo tipoVeicolo = new TipoVeicolo();
 		tipoVeicolo.setTipo(req.getNome());;
@@ -38,6 +40,8 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	public void update(TipoVeicoloReq req) throws Exception {
 		log.debug("update {}", req);	
 		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(req.getId()).orElseThrow(()-> new AcademyException("Tipo Veicolo non trovato"));
+		if (tipoVeicoloRepository.existsByTipo(req.getNome()))
+			throw new AcademyException("tipoVeicolo-fnd");
 		if(req.getNome() != null) tipoVeicolo.setTipo(req.getNome());
 		
 		tipoVeicoloRepository.save(tipoVeicolo);	
