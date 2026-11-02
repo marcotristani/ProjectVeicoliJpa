@@ -15,7 +15,9 @@ public class BiciDTO {
 	
 	private Integer id;
 	private Integer idTipoSospensione;
+	private Integer idFreno;
 	private Integer numeroMarce;
+	private Integer numeroCorone;
 	private Boolean pieghevole;
-	private Integer idVeicolo;
+	private VeicoliDTO Veicolo;
 }

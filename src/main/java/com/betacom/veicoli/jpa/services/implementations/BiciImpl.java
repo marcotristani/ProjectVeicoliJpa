@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.veicoli.jpa.dto.input.BiciReq;
 import com.betacom.veicoli.jpa.dto.output.BiciDTO;
 import com.betacom.veicoli.jpa.exceptions.AcademyException;
+import com.betacom.veicoli.jpa.mapper.BiciMap;
 import com.betacom.veicoli.jpa.models.Bici;
 import com.betacom.veicoli.jpa.models.Freni;
 import com.betacom.veicoli.jpa.models.TipoSospensione;
@@ -76,14 +77,18 @@ public class BiciImpl implements IBiciService{
 
 	@Override
 	public void delete(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		
+		log.debug("Delete bici con id {}", id);
+		Bici bici = biciR.findById(id)
+		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
+
+		biciR.delete(bici);
+		veiS.delete(bici.getVeicolo().getId());
 	}
 
 	@Override
 	public List<BiciDTO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Bici> lB = biciR.findAll();
+		return BiciMap.buildBiciDTO(lB);
 	}
 
 }

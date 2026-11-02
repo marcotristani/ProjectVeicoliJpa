@@ -1,6 +1,5 @@
 package com.betacom.veicoli.jpa.services.implementations;
 
-import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -81,7 +80,11 @@ public class VeicoliImpl implements IVeicoliService{
 	
 	@Override
 	public void delete(Integer id) throws Exception {
-		// TODO Auto-generated method stub
+		log.debug("Delete veicolo con id {}", id);
+		Veicoli veicolo = veiR.findById(id)
+		        .orElseThrow(() -> new AcademyException("veicolo-ntfnd"));
+
+		veiR.delete(veicolo);
 		
 	}
 	
