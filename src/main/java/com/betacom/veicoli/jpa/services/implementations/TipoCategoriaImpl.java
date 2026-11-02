@@ -27,6 +27,9 @@ public class TipoCategoriaImpl implements ITipoCategoriaService {
 	@Override
 	public void create(TipoCategoriaReq req) throws Exception {
 		log.debug("create {}", req);
+		if (tipoCatR.existsByNome(req.getNome())) {
+			throw new AcademyException("tipocat-exist");
+		}
 		TipoCategoria cat = new TipoCategoria();
 		cat.setNome(req.getNome());
 		tipoCatR.save(cat);
@@ -40,6 +43,9 @@ public class TipoCategoriaImpl implements ITipoCategoriaService {
 				.orElseThrow(() -> new AcademyException("tipocat-ntfnd"));
 
 		if (req.getNome() != null) {
+			if (tipoCatR.existsByNome(req.getNome())) {
+				throw new AcademyException("tipocat-exist");
+			}
 			cat.setNome(req.getNome());
 		}
 		tipoCatR.save(cat);
