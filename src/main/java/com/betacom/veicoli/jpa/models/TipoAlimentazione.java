@@ -32,8 +32,7 @@ public class TipoAlimentazione {
 	private String nome;
 	
 	@Column(
-			name = "pattern",
-			nullable = false
+			name = "pattern"
 			)
 	private String pattern;
 	
