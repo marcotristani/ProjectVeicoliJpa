@@ -14,17 +14,14 @@ public class BiciReq {
 	private Integer id;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipososp-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "tipososp-no-id")
 	private Integer idTipoSospensione;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
 	private Integer numeroMarce;
 	
 	private Boolean pieghevole;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "veicoli-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "veicoli-no-id")
 	private Integer idVeicolo;
 	
 	

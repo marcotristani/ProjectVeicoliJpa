@@ -11,5 +11,5 @@ public interface IColoreService {
 	void delete(Integer id) throws Exception;
 
 	List<ColoreDTO> list() throws Exception;
-
+    
 }

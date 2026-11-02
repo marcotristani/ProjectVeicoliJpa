@@ -18,10 +18,8 @@ public class MotoReq {
 	private String targa;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
 	private Integer cc;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
 	private Integer idVeicolo;
 }

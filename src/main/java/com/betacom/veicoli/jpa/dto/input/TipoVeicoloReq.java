@@ -17,7 +17,6 @@ public class TipoVeicoloReq {
 	private Integer id;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "status-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "status-ntfnd")
 	private Boolean status;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipoveicolo-ntfnd")

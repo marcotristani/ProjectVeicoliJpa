@@ -18,7 +18,6 @@ public class FullVeicoloReq {
 	private String tipo;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
 	private Integer numeroRuote;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cat-ntfnd")
@@ -42,15 +41,12 @@ public class FullVeicoloReq {
 	private String modello;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "annoprod-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "annoprod-ntfnd")
 	private Integer annoProduzione;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "np-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "np-ntfnd")
 	private Integer numeroPorte;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "nm-ntfnd")
 	private Integer numeroMarce;
 	
 	private Boolean pieghevole;
@@ -64,6 +60,5 @@ public class FullVeicoloReq {
 	private String targa;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
 	private Integer cc;
 }

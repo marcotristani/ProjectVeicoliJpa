@@ -18,14 +18,11 @@ public class MacchinaReq {
 	private String targa;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "np-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "np-ntfnd")
 	private Integer numeroPorte;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
 	private Integer idVeicolo;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
 	private Integer cc;
 }
