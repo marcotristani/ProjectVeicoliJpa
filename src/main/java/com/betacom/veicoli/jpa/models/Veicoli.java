@@ -2,11 +2,15 @@ package com.betacom.veicoli.jpa.models;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,14 +29,7 @@ public class Veicoli {
 			nullable = false
 			)
 	private Integer nRuote; 
-	
-	private Integer  idTipoVeicolo;
-	private Integer  idTipoAlimentazione;
-	private String   tipoAlimentazionePattern;
-	private Integer  idTipoCategoria;    
-	private String   tipoCategoriaPattern;
-	private Integer  idColore;
-	private Integer  idMarca;  
+ 
 	
 	@Column(
 			name = "modello",
@@ -51,6 +48,66 @@ public class Veicoli {
 			nullable = false
 			)
 	private LocalDateTime dataInserimento;
+
+	@OneToOne
+	@JoinColumn(
+			name = "tipo_veicolo_id",
+			referencedColumnName = "id"
+			)
+	private TipoVeicolo tipoVeicolo;
 	
+	@ManyToOne
+	@JoinColumn(
+			name = "alimentazione_id",
+			nullable = false
+			)
+	private TipoAlimentazione  tipoAlimentazione; 
+	
+	private String   tipoAlimentazionePattern;
+
+	
+	@ManyToOne
+	@JoinColumn(
+			name = "categoria_id",
+			nullable = false
+			)
+	private TipoCategoria tipoCategoria;    
+	
+	private String   tipoCategoriaPattern;
+
+	
+	@ManyToOne
+	@JoinColumn(
+			name = "colore_id",
+			nullable = false
+			)
+	private Colore colore;
+	
+	@ManyToOne
+	@JoinColumn(
+			name = "marca_id",
+			nullable = false
+			)
+	private Marca marca;  
+	
+	//così facendo ho una relazione bidirezionale con macchina, ma non visulizzo la colonna macchina nella tabella veicoli perchè non ho fatto join column
+	//inoltre dico che eliminando il veicolo di conseguenza elimino la macchina
+	@OneToOne(  mappedBy = "veicolo",
+				cascade = CascadeType.REMOVE,
+				orphanRemoval = true
+			)
+	private Macchina macchina;
+	
+	@OneToOne(  mappedBy = "veicolo",
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true
+		)
+	private Moto moto;
+	
+	@OneToOne(  mappedBy = "veicolo",
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true
+		)
+	private Bici bici;
 	
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,5 +29,12 @@ public class Moto {
 			nullable = false
 			)
 	private Integer cc;
+	
+	@OneToOne
+	@JoinColumn(
+			name = "veicolo_id",
+			referencedColumnName = "id"
+			)
+	private Veicoli veicolo;
 
 }

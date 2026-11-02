@@ -7,6 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,8 +42,27 @@ public class Bici {
 			)
 	private Boolean pieghevole;
 	
-	private Integer idVeicolo;
-	private Integer idFreno;
-	private Integer idSospensione;
+	@OneToOne
+	@JoinColumn(
+			name = "veicolo_id",
+			referencedColumnName = "id"
+			)
+	private Veicoli veicolo;
+	
+	@ManyToOne
+	@JoinColumn(
+			name = "freno_id",
+			nullable = false
+			)
+	private Freni freno;
+	
+	@ManyToOne
+	@JoinColumn(
+			name = "sospensione_id",
+			nullable = false
+			)
+	private TipoSospensione sospensione;
+	
+
 	
 }
