@@ -22,10 +22,7 @@ public class VeicoliReq {
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
 	private Integer idTipoVeicolo;
-	
-	@NotNull(groups = ValidationGroup.Create.class, message = "alimpattern-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "alimpattern-ntfnd")
-	private String tipoCategoriaPattern;
+
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cat-no-id")
 	private Integer tipoCategoriaID;
@@ -37,10 +34,6 @@ public class VeicoliReq {
 	@NotBlank(groups = ValidationGroup.Create.class, message = "modello-ntfnd")
 	private String modello;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "alimpattern-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "alimpattern-ntfnd")
-	private String TipoAlimentazionePattern;
-	
 	@NotNull(groups = ValidationGroup.Create.class, message = "alim-ntfnd")
 	private Integer TipoAlimentazioneId;
 	
@@ -49,9 +42,7 @@ public class VeicoliReq {
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "annoprod-ntfnd")
 	private Integer  annoProduzione;
-	
-	@NotNull(groups = ValidationGroup.Create.class, message = "datains-ntfnd")
-	private LocalDateTime   data_inserimento;
+
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
 	private Integer  numeroRuote;
