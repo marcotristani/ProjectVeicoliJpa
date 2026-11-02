@@ -29,7 +29,7 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 	@Override
 	public void create(TipoAlimentazioneReq req) throws Exception {
 		log.debug("create {}", req);
-		if (tipoAlimR.existsByNomeAlimentazione(req.getNome()))
+		if (tipoAlimR.existsByNome(req.getNome()))
 			throw new AcademyException("tipoAlim-fnd");
 		TipoAlimentazione alim = new TipoAlimentazione();
 		alim.setNome(req.getNome());
@@ -45,7 +45,7 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 		TipoAlimentazione alim = tipoAlimR.findById(req.getId())
 				.orElseThrow(() -> new AcademyException("tipoAlim-ntfnd"));
 		if (req.getNome() != null && !req.getNome().equalsIgnoreCase(alim.getNome())) {
-			if (tipoAlimR.existsByNomeAlimentazione(req.getNome()))
+			if (tipoAlimR.existsByNome(req.getNome()))
 				throw new AcademyException("cfisc-fnd");
 			alim.setNome(req.getNome());
 		}
