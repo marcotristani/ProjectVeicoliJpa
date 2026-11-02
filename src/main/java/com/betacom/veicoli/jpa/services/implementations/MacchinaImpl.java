@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.veicoli.jpa.dto.input.MacchinaReq;
 import com.betacom.veicoli.jpa.dto.output.MacchinaDTO;
 import com.betacom.veicoli.jpa.exceptions.AcademyException;
-import com.betacom.veicoli.jpa.models.Macchina;
-import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IMacchinaRepository;
 import com.betacom.veicoli.jpa.repositories.ITargaRepository;
 import com.betacom.veicoli.jpa.repositories.IVeicoliRepository;

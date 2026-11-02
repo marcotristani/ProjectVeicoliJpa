@@ -4,9 +4,10 @@ import java.util.List;
 
 import com.betacom.veicoli.jpa.dto.input.VeicoliReq;
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
+import com.betacom.veicoli.jpa.models.Veicoli;
 
 public interface IVeicoliService {
-	void create(VeicoliReq req) throws Exception;
+	Veicoli create(VeicoliReq req) throws Exception;
 	void update(VeicoliReq req) throws Exception;
 	void delete(Integer id) throws Exception;
 
