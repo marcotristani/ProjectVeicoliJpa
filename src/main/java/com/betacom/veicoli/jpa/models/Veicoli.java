@@ -63,7 +63,6 @@ public class Veicoli {
 			)
 	private TipoAlimentazione  tipoAlimentazione; 
 	
-	private String   tipoAlimentazionePattern;
 
 	
 	@ManyToOne
@@ -73,7 +72,6 @@ public class Veicoli {
 			)
 	private TipoCategoria tipoCategoria;    
 	
-	private String   tipoCategoriaPattern;
 
 	
 	@ManyToOne

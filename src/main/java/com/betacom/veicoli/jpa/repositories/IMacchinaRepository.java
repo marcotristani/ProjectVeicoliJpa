@@ -9,5 +9,4 @@ public interface IMacchinaRepository extends JpaRepository<Macchina, Integer>{
 	//PER CONTROLLI SE LA TARGA O IL VEICOLO SONO GIà PRESENTI
 	//boolean esisteTarga(String targa);
     //boolean esisteIdVeicolo(Integer idVeicolo);
-
 }
