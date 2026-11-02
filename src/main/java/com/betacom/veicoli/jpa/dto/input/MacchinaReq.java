@@ -1,5 +1,6 @@
 package com.betacom.veicoli.jpa.dto.input;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,8 +21,11 @@ public class MacchinaReq {
 	@NotNull(groups = ValidationGroup.Create.class, message = "np-ntfnd")
 	private Integer numeroPorte;
 	
-
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
 	private Integer cc;
+	
+	@Valid
+	@NotNull(groups = ValidationGroup.Create.class, message = "veicolo-ntfnd")
+	private VeicoliReq veicolo;
 }
