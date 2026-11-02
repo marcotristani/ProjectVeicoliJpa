@@ -12,7 +12,6 @@ public class TipoAlimentazioneMap {
 		return TipoAlimentazioneDTO.builder()
 				.id(a.getId())
 				.nome(a.getNome())
-				.pattern(a.getPattern())
 				.build();
 	}
 	

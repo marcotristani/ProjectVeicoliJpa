@@ -57,7 +57,7 @@ public class TipoAlimentazioneController {
 				);
 	}
 	
-	@GetMapping("/delete/{id}")
+	@GetMapping("/list")
 	public ResponseEntity<Object> list() throws Exception{
 		return ResponseEntity.ok(tipoAlimS.list());
 	}

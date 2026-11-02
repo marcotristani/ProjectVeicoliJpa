@@ -13,9 +13,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class TipoAlimentazioneReq {
-	@NotNull(groups = ValidationGroup.Create.class, message = "pattern-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "pattern-ntfnd")
-	private String pattern;
+
 	
 	@NotNull(groups = ValidationGroup.Update.class, message = "tipoalim-no-id")
 	private Integer id;
