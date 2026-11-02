@@ -48,11 +48,11 @@ public class Veicoli {
 			nullable = false
 			)
 	private LocalDateTime dataInserimento;
-
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(
 			name = "tipo_veicolo_id",
-			referencedColumnName = "id"
+			nullable = false
 			)
 	private TipoVeicolo tipoVeicolo;
 	
