@@ -11,7 +11,13 @@
        drop constraint if exists FK8ma46gvl87a152woxxd940bc2;
 
     alter table if exists macchine 
+       drop constraint if exists FKonxv10d7reas6l6ep3k7d1xrc;
+
+    alter table if exists macchine 
        drop constraint if exists FK7gued6f7mmdwo1cbddtpkdvlp;
+
+    alter table if exists moto 
+       drop constraint if exists FKmo5bkdxqiw8e3lgdnadyrutsa;
 
     alter table if exists moto 
        drop constraint if exists FK893boxjxrhxuyuqr3is7jb9lc;
@@ -48,6 +54,8 @@
     drop table if exists marche cascade;
 
     drop table if exists moto cascade;
+
+    drop table if exists targhe cascade;
 
     drop table if exists tipo_sospensioni cascade;
 

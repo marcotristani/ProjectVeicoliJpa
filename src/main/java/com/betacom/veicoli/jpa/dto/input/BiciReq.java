@@ -31,5 +31,5 @@ public class BiciReq {
 	
 	@Valid
 	@NotNull(groups = ValidationGroup.Create.class, message = "veicoli-no-id")
-	private VeicoliReq Veicolo;
+	private VeicoliReq veicolo;
 }

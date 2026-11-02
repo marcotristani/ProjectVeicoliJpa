@@ -1,4 +1,4 @@
-﻿package com.betacom.veicoli.jpa.repositories;
+package com.betacom.veicoli.jpa.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

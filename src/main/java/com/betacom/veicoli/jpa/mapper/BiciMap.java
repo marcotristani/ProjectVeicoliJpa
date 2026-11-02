@@ -14,6 +14,7 @@ public class BiciMap {
 				.numeroMarce(b.getMarce())
 				.numeroCorone(b.getCorone())
 				.pieghevole(b.getPieghevole())
+				.veicolo(VeicoliMap.buildVeicoliDTO(b.getVeicolo()))
 				.build();
 	}
 	

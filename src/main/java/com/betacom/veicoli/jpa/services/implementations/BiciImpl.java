@@ -81,7 +81,6 @@ public class BiciImpl implements IBiciService{
 		Bici bici = biciR.findById(id)
 		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
 
-		biciR.delete(bici);
 		veiS.delete(bici.getVeicolo().getId());
 	}
 

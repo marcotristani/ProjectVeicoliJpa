@@ -1,4 +1,4 @@
-﻿package com.betacom.veicoli.jpa.controllers;
+package com.betacom.veicoli.jpa.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

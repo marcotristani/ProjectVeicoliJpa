@@ -1,4 +1,4 @@
-﻿package com.betacom.veicoli.jpa.mapper;
+package com.betacom.veicoli.jpa.mapper;
 
 import java.util.List;
 

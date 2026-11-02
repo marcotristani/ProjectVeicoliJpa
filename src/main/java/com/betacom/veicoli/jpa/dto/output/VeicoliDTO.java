@@ -16,11 +16,9 @@ import lombok.Setter;
 public class VeicoliDTO {
 	private Integer  id;
 	private Integer  idTipoVeicolo;
-	private String   tipoCategoriaPattern;
 	private Integer  tipoCategoriaId;
 	private Integer  idMarca;
 	private String   modello;
-	private String   TipoAlimentazionePattern;
 	private Integer  TipoAlimentazioneId;
 	private Integer  idColore;
 	private Integer  annoProduzione;
