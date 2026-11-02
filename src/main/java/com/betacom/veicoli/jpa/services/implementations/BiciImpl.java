@@ -75,6 +75,8 @@ public class BiciImpl implements IBiciService{
 		biciR.save(bici);
 	}
 
+	
+	@Transactional
 	@Override
 	public void delete(Integer id) throws Exception {
 		log.debug("Delete bici con id {}", id);

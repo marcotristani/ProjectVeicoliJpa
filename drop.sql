@@ -47,11 +47,11 @@
 
     drop table if exists freni cascade;
 
-    drop table if exists full_veicolo cascade;
-
     drop table if exists macchine cascade;
 
     drop table if exists marche cascade;
+
+    drop table if exists messaggio_sistema cascade;
 
     drop table if exists moto cascade;
 

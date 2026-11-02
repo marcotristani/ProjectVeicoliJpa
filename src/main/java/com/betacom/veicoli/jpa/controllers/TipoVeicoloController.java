@@ -1,6 +1,7 @@
 package com.betacom.veicoli.jpa.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.veicoli.jpa.dto.input.TipoVeicoloReq;
+import com.betacom.veicoli.jpa.dto.input.ValidationGroup;
 import com.betacom.veicoli.jpa.dto.output.ResponseDTO;
 import com.betacom.veicoli.jpa.services.interfaces.ITipoVeicoloService;
 
@@ -32,7 +34,7 @@ public class TipoVeicoloController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> create(
-			//@Validated(ValidazioneGroup.Create.class)
+			@Validated(ValidationGroup.Create.class)
 			@RequestBody TipoVeicoloReq req) throws Exception{
 		tipoVeicoloService.create(req);
 		
@@ -42,7 +44,7 @@ public class TipoVeicoloController {
 	
 	@PatchMapping("/update")
 	public ResponseEntity<ResponseDTO> update(
-			//@Validated(ValidazioneGroup.Update.class)
+			@Validated(ValidationGroup.Update.class)
 			@RequestBody TipoVeicoloReq req) throws Exception{
 			tipoVeicoloService.update(req);
 		return ResponseEntity.ok(ResponseDTO.builder().msg("Update successfull").build());

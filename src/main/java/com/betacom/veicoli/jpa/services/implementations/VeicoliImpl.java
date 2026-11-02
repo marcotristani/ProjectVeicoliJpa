@@ -78,6 +78,7 @@ public class VeicoliImpl implements IVeicoliService{
 		veiR.save(v);
 	}
 	
+	@Transactional
 	@Override
 	public void delete(Integer id) throws Exception {
 		log.debug("Delete veicolo con id {}", id);

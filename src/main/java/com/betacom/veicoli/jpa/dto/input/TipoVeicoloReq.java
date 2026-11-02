@@ -16,14 +16,8 @@ public class TipoVeicoloReq {
 	@NotNull(groups = ValidationGroup.Update.class, message = "tipov-no-id")
 	private Integer id;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "status-ntfnd")
-	private Boolean status;
-	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipoveicolo-ntfnd")
 	@NotBlank(groups = ValidationGroup.Create.class, message = "tipoveicolo-ntfnd")
 	private String nome;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "pattern-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "pattern-ntfnd")
-	private String pattern;
 }

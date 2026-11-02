@@ -3,6 +3,7 @@ package com.betacom.veicoli.jpa.services.implementations;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.veicoli.jpa.dto.input.TipoVeicoloReq;
 import com.betacom.veicoli.jpa.dto.output.TipoVeicoloDTO;
@@ -12,7 +13,6 @@ import com.betacom.veicoli.jpa.models.TipoVeicolo;
 import com.betacom.veicoli.jpa.repositories.ITipoVeicoloRepository;
 import com.betacom.veicoli.jpa.services.interfaces.ITipoVeicoloService;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

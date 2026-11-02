@@ -3,7 +3,7 @@ package com.betacom.veicoli.jpa.services.implementations;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.veicoli.jpa.dto.input.TipoAlimentazioneReq;
 import com.betacom.veicoli.jpa.dto.output.TipoAlimentazioneDTO;
@@ -13,7 +13,6 @@ import com.betacom.veicoli.jpa.models.TipoAlimentazione;
 import com.betacom.veicoli.jpa.repositories.ITipoAlimentazioneRepository;
 import com.betacom.veicoli.jpa.services.interfaces.ITipoAlimentazioneService;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,7 +44,7 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 				.orElseThrow(() -> new AcademyException("tipoAlim-ntfnd"));
 		if (req.getNome() != null && !req.getNome().equalsIgnoreCase(alim.getNome())) {
 			if (tipoAlimR.existsByNome(req.getNome()))
-				throw new AcademyException("cfisc-fnd");
+				throw new AcademyException("tipoAlim-fnd");
 			alim.setNome(req.getNome().toLowerCase());
 		}
 		tipoAlimR.save(alim);
