@@ -1,5 +1,4 @@
 package com.betacom.veicoli.jpa.services.implementations;
-
 import java.util.List;
 import java.util.Optional;
 
