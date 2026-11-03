@@ -2,15 +2,16 @@ package com.betacom.veicoli.jpa.services.implementations;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
 import com.betacom.veicoli.jpa.mapper.BiciMap;
+import com.betacom.veicoli.jpa.mapper.MacchinaMap;
 import com.betacom.veicoli.jpa.mapper.MotoMap;
 import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IBiciRepository;
+import com.betacom.veicoli.jpa.repositories.IMacchinaRepository;
 import com.betacom.veicoli.jpa.repositories.IMotoRepository;
 import com.betacom.veicoli.jpa.repositories.IVeicoliRepository;
 import com.betacom.veicoli.jpa.services.interfaces.IListService;
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ListImpl implements IListService{
 
-//	private final IMacchinaRepository macchinaRepository;
+	private final IMacchinaRepository macchinaRepository;
 	private final IMotoRepository motoRepository;
 	private final IBiciRepository biciRepository;
 	private final IVeicoliRepository veicoliRepository;
@@ -37,6 +38,8 @@ public class ListImpl implements IListService{
 	    	        
 	    	        if ("MOTO".equals(tipo)) veicoliDTO.add(MotoMap.buildMotoDTO(motoRepository.findByVeicolo(veicolo)));
 	    	        if ("BICI".equals(tipo)) veicoliDTO.add(BiciMap.buildBiciDTO(biciRepository.findByVeicolo(veicolo)));
+	    	        if ("MACCHINA".equals(tipo)) veicoliDTO.add(MacchinaMap.buildMacchinaDTO(macchinaRepository.findByVeicolo(veicolo)));
+
 	    	        
 	    	    });
 
