@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class MotoReq {
+public class MotoReq extends VeicoliReq{
 	@NotNull(groups = ValidationGroup.Update.class, message = "moto-no-id")
 	private Integer id;
 	
@@ -20,6 +20,6 @@ public class MotoReq {
 	@NotNull(groups = ValidationGroup.Create.class, message = "cc-ntfnd")
 	private Integer cc;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
+	//@NotNull(groups = ValidationGroup.Create.class, message = "veicolo-no-id")
 	private Integer idVeicolo;
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.veicoli.jpa.dto.input.VeicoliReq;
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
 import com.betacom.veicoli.jpa.exceptions.AcademyException;
+import com.betacom.veicoli.jpa.models.TipoVeicolo;
 import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IColoreRepository;
 import com.betacom.veicoli.jpa.repositories.IMarcaRepository;
@@ -35,7 +36,7 @@ public class VeicoliImpl implements IVeicoliService{
 	
 	@Transactional
 	@Override
-	public Veicoli create(VeicoliReq req) throws Exception {
+	public Veicoli create(VeicoliReq req, TipoVeicolo tipoVeicolo) throws Exception {
 		Veicoli v = new Veicoli();
 		v.setColore(colR.findById(req.getIdColore())
 				.orElseThrow(() -> new AcademyException("colore-ntfnd")));
@@ -45,8 +46,7 @@ public class VeicoliImpl implements IVeicoliService{
 				.orElseThrow(() -> new AcademyException("alim-ntfnd")));
 		v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
 				.orElseThrow(() -> new AcademyException("cat-ntfnd")));
-		v.setTipoVeicolo(tipoVeicoloR.findById(req.getIdTipoVeicolo())
-				.orElseThrow(() -> new AcademyException("tipoV-ntfnd")));
+		v.setTipoVeicolo(tipoVeicolo);
 		v.setModello(req.getModello());
 		v.setAnnoProduzione(req.getAnnoProduzione());
 		v.setNRuote(req.getNumeroRuote());
