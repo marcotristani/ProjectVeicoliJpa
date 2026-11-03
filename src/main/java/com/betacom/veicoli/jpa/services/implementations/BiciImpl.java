@@ -41,7 +41,7 @@ public class BiciImpl implements IBiciService{
 	public void create(BiciReq req) throws Exception {
 		log.debug("Create {}", req);
 		Freni freno = freniR.findById(req.getIdFreno())
-		        .orElseThrow(() -> new AcademyException("freno-ntfnd"));
+		        .orElseThrow(() -> new AcademyException("freni-ntfnd"));
 		TipoSospensione sospensione = sospensioniR.findById(req.getIdTipoSospensione())
 				.orElseThrow(() -> new AcademyException("tipososp-ntfnd"));
 		
@@ -49,7 +49,7 @@ public class BiciImpl implements IBiciService{
 		if(tipoVR.existsByTipo("bici"))
 		     tipoVeicolo = tipoVR.findByTipo("bici");
 		else
-			throw new AcademyException("tipoVeicolo-ntFnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 		
 		Veicoli veicolo = veiS.create(req, tipoVeicolo);
 		Bici bici = new Bici();
@@ -72,7 +72,7 @@ public class BiciImpl implements IBiciService{
 		Bici bici = biciR.findById(req.getId())
 		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
 		Freni freno = freniR.findById(req.getIdFreno())
-		        .orElseThrow(() -> new AcademyException("freno-ntfnd"));
+		        .orElseThrow(() -> new AcademyException("freni-ntfnd"));
 		TipoSospensione sospensione = sospensioniR.findById(req.getIdTipoSospensione())
 		        .orElseThrow(() -> new AcademyException("tipososp-ntfnd"));
 		bici.setFreno(freno);

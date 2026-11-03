@@ -42,7 +42,7 @@ public class MotoImpl implements IMotoService{
 		if(tipoVeicoloRepository.existsByTipo("moto"))
 		     tipoVeicolo = tipoVeicoloRepository.findByTipo("moto");
 		else
-			throw new AcademyException("tipoVeicolo-noFnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 			
 		Veicoli veicolo = veicoliService.create(req, tipoVeicolo);
 		

@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class FreniReq {
 	
-	@NotNull(groups = ValidationGroup.Update.class, message = "freni-no-id" )
+	@NotNull(groups = ValidationGroup.Update.class, message = "freno-no-id" )
 	private Integer id;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "freni-ntfnd")
