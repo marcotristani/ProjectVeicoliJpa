@@ -15,7 +15,6 @@ public class VeicoliReq {
 	
 	private Integer idVeicolo;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
 	private Integer idTipoVeicolo;
 
 	

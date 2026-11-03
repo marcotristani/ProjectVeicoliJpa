@@ -69,8 +69,16 @@ public class MotoImpl implements IMotoService{
 				.targa(req.getTarga())
 				.build());
 		}
+		
+		Targa targa = new Targa();
+		if (req.getTarga() != null)
+			targa = targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga()).build());
+		
+		
 		req.setIdVeicolo(moto.getVeicolo().getId());
 		Veicoli veicoloModificato = veicoliService.update(req);
+		
+		moto.setTarga(targa);
 		moto.setVeicolo(veicoloModificato);
 		motoRepository.save(moto);	
 	}

@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.veicoli.jpa.dto.input.BiciReq;
-import com.betacom.veicoli.jpa.dto.input.TipoAlimentazioneReq;
 import com.betacom.veicoli.jpa.dto.input.ValidationGroup;
 import com.betacom.veicoli.jpa.dto.output.ResponseDTO;
 import com.betacom.veicoli.jpa.services.interfaces.IBiciService;
-import com.betacom.veicoli.jpa.services.interfaces.ITipoAlimentazioneService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -29,11 +29,13 @@ public class TargaImpl implements ITargaService{
 
 	@Transactional
 	@Override
-	public void update(TargaReq req) throws Exception {
+	public Targa update(TargaReq req) throws Exception {
 		Targa targa = targaRepository.findById(req.getId())
 		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
-		targa.setTarga(req.getTarga());
-		targaRepository.save(targa);
+		if(targaRepository.existsByTarga(req.getTarga().trim().toLowerCase()))
+			throw new AcademyException("targa-fnd");
+		targa.setTarga(req.getTarga().trim().toLowerCase());
+		return targaRepository.save(targa);
 		
 	}
 
