@@ -28,7 +28,7 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	public void create(TipoVeicoloReq req) throws Exception {
 		log.debug("create {}", req);
 		if (tipoVeicoloRepository.existsByTipo(req.getNome()))
-			throw new AcademyException("tipoVeicolo-fnd");
+			throw new AcademyException("tipoveicolo-fnd");
 
 		TipoVeicolo tipoVeicolo = new TipoVeicolo();
 		tipoVeicolo.setTipo(req.getNome());;

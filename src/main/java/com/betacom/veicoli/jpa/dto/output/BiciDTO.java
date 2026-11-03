@@ -19,5 +19,5 @@ public class BiciDTO extends VeicoliDTO{
 	private Integer numeroMarce;
 	private Integer numeroCorone;
 	private Boolean pieghevole;
-	private VeicoliDTO veicolo;
+	private Integer idVeicolo;
 }

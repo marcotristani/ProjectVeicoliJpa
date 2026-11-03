@@ -42,7 +42,7 @@ public class MotoImpl implements IMotoService{
 		if(tipoVeicoloRepository.existsByTipo("moto"))
 		     tipoVeicolo = tipoVeicoloRepository.findByTipo("moto");
 		else
-			throw new AcademyException("tipoVeicolo-noFnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 			
 		Veicoli veicolo = veicoliService.create(req, tipoVeicolo);
 		
@@ -63,11 +63,13 @@ public class MotoImpl implements IMotoService{
 				.orElseThrow(() -> new AcademyException("moto-ntfnd"));
 		if(req.getCc()!= null) moto.setCc(req.getCc());
 		
-		targaService.update(TargaReq.builder()
+		if(req.getTarga() != null) {
+			
+			targaService.update(TargaReq.builder()
 				.id(moto.getTarga().getId())
 				.targa(req.getTarga())
 				.build());
-		
+		}
 		
 		veicoliService.update(moto.getVeicolo(), req);
 		motoRepository.save(moto);	

@@ -8,6 +8,7 @@ import com.betacom.veicoli.jpa.models.Targa;
 import com.betacom.veicoli.jpa.repositories.ITargaRepository;
 import com.betacom.veicoli.jpa.services.interfaces.ITargaService;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -15,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 public class TargaImpl implements ITargaService{
 
 	private final ITargaRepository targaRepository;
+	
+	@Transactional
 	@Override
 	public Targa create(TargaReq req) throws Exception {
 		if(targaRepository.existsByTarga(req.getTarga().trim().toLowerCase()))
@@ -24,6 +27,7 @@ public class TargaImpl implements ITargaService{
 		return targaRepository.save(targa);
 	}
 
+	@Transactional
 	@Override
 	public void update(TargaReq req) throws Exception {
 		Targa targa = targaRepository.findById(req.getId())

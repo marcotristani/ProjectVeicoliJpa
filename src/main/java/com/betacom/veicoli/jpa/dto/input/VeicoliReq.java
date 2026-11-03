@@ -27,10 +27,10 @@ public class VeicoliReq {
 	@NotBlank(groups = ValidationGroup.Create.class, message = "modello-ntfnd")
 	private String modello;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "alim-ntfnd")
+	@NotNull(groups = ValidationGroup.Create.class, message = "tipoalim-ntfnd")
 	private Integer tipoAlimentazioneId;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "col-no-id")
+	@NotNull(groups = ValidationGroup.Create.class, message = "colore-no-id")
 	private Integer idColore;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "annoprod-ntfnd")
