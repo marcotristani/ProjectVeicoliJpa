@@ -3,7 +3,11 @@ package com.betacom.veicoli.jpa.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.betacom.veicoli.jpa.models.TipoAlimentazione;
+import java.util.List;
+
 
 public interface ITipoAlimentazioneRepository extends JpaRepository<TipoAlimentazione, Integer>{
 	Boolean existsByNome(String nome);
+	
+	TipoAlimentazione findByNome(String nome);
 }
