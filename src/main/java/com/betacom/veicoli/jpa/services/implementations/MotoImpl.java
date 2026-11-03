@@ -63,7 +63,7 @@ public class MotoImpl implements IMotoService{
 				.orElseThrow(() -> new AcademyException("moto-ntfnd"));
 		if(req.getCc()!= null) moto.setCc(req.getCc());
 		
-		if(req.getTarga() != null) {
+		if(req.getTarga() != null && !req.getTarga().trim().equalsIgnoreCase(moto.getTarga().getTarga())) {
 			targaService.update(TargaReq.builder()
 				.id(moto.getTarga().getId())
 				.targa(req.getTarga())
