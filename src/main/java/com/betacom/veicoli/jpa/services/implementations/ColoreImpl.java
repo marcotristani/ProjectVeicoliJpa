@@ -31,7 +31,7 @@ public class ColoreImpl implements IColoreService{
 		
 		String nomeColore = req.getNome().trim().toLowerCase();
 		
-		if(colR.existsByNome(nomeColore)) throw new AcademyException("colore gia presente in DB");
+		if(colR.existsByNome(nomeColore)) throw new AcademyException("colore-fnd");
 		
 		Colore col= new Colore();
 		col.setNome(nomeColore);
@@ -43,7 +43,7 @@ public class ColoreImpl implements IColoreService{
 		log.debug("Aggiornamento colore{}", req);
 		
 		Colore col= colR.findById(req.getId())
-				.orElseThrow(() -> new AcademyException("Colore non presente in DB"));
+				.orElseThrow(() -> new AcademyException("colore-ntfnd"));
 		
 		if(req.getNome() != null) {
 			
@@ -53,7 +53,7 @@ public class ColoreImpl implements IColoreService{
 				
 				if(colR.existsByNome(nomeColore))
 				
-				throw new AcademyException("Colore gia presente nel DB");
+				throw new AcademyException("colore-fnd");
 				col.setNome(nomeColore);
 			}
 		}
@@ -69,9 +69,9 @@ public class ColoreImpl implements IColoreService{
 		log.debug("Eliminazione colore{}", id);
 		 
 		Colore col= colR.findById(id)
-				.orElseThrow(() -> new AcademyException("Colore non presente in DB"));
+				.orElseThrow(() -> new AcademyException("colore-ntfnd"));
 		
-		if (!col.getVeicoli().isEmpty()) throw new AcademyException("colore in uso");
+		if (!col.getVeicoli().isEmpty()) throw new AcademyException("colore-con-veicoli");
 		
 		colR.delete(col);
 		

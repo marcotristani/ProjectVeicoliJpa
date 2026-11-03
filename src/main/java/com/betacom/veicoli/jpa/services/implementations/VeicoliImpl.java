@@ -90,9 +90,9 @@ public class VeicoliImpl implements IVeicoliService{
 	}
 	
 	@Override
-	public List<VeicoliDTO> list(Integer id, String TipoVeicolo, String TipoCategoria) throws Exception {
+	public List<VeicoliDTO> list(Integer id, String tipoVeicolo, String tipoCategoria) throws Exception {
 		log.debug("listByFilters");
-		List<VeicoliDTO> lS = VeicoliMap.buildVeicoliDTO(veiR.list(id, TipoVeicolo, TipoCategoria));
+		List<VeicoliDTO> lS = VeicoliMap.buildVeicoliDTO(veiR.list(tipoVeicolo, tipoCategoria));
 		return lS;
 	}
 

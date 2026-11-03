@@ -31,12 +31,12 @@ public class TargaImpl implements ITargaService{
 	@Override
 	public Targa update(TargaReq req) throws Exception {
 		Targa targa = targaRepository.findById(req.getId())
-		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
-		if(targaRepository.existsByTarga(req.getTarga().trim().toLowerCase()))
+		        .orElseThrow(() -> new AcademyException("targa-ntfnd"));
+		String nuova = req.getTarga().trim().toLowerCase();
+		if (!nuova.equals(targa.getTarga()) && targaRepository.existsByTarga(nuova))
 			throw new AcademyException("targa-fnd");
-		targa.setTarga(req.getTarga().trim().toLowerCase());
-		return targaRepository.save(targa);
-		
+		targa.setTarga(nuova);
+		return targa;
 	}
 
 	@Override

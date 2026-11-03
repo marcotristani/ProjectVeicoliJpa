@@ -6,5 +6,5 @@ import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
 
 public interface IListService {
 
-	List<VeicoliDTO> printList();
+	List<VeicoliDTO> printList(String tipoVeicolo, String tipoCateoria);
 }
