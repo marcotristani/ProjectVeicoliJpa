@@ -31,16 +31,15 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 
-public class MacchinaImpl  implements IMacchinaService{
-	
+public class MacchinaImpl implements IMacchinaService {
+
 	private final IMacchinaRepository macR;
 	private final ITargaRepository targaR;
 	private final IVeicoliService veicoliS;
 	private final IVeicoliRepository veR;
 	private final ITipoVeicoloRepository tipoveicoloR;
 	private final ITargaService targaService;
-	
-	
+
 	@Transactional
 	@Override
 	public void create(MacchinaReq req) throws Exception {
@@ -56,11 +55,12 @@ public class MacchinaImpl  implements IMacchinaService{
 		if (tipo == null)
 			throw new AcademyException("tipoVeicolo-ntfnd");
 
-		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq (req È anche una VeicoliReq)
+		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq (req È
+		// anche una VeicoliReq)
 		Veicoli veicolo = veicoliS.create(req, tipo);
 
 		// 4. targa: salvata prima della macchina (targa_id sta in macchine)
-		Targa t = targaService.create(TargaReq.builder().targa(targa).build());	
+		Targa t = targaService.create(TargaReq.builder().targa(targa).build());
 
 		// 5. macchina, collegata a padre e targa (lati owner)
 		Macchina m = new Macchina();
@@ -74,31 +74,27 @@ public class MacchinaImpl  implements IMacchinaService{
 	@Override
 	@Transactional
 	public void update(MacchinaReq req) throws Exception {
-		Macchina mac = macR.findById(req.getId())
-				.orElseThrow(() -> new AcademyException("macchina-ntfnd"));
+		Macchina mac = macR.findById(req.getIdMacchina()).orElseThrow(() -> new AcademyException("macchina-ntfnd"));
 
+		
+		// 2. dati della macchina (solo se arrivati)
 		Optional.ofNullable(req.getCc()).ifPresent(mac::setCc);
 		Optional.ofNullable(req.getNumeroPorte()).ifPresent(mac::setPorte);
 
-		// Targa: si modifica solo se è arrivata, è diversa da quella attuale e non la usa nessun altro
-		Optional.ofNullable(req.getTarga())                         // scatola piena se nel JSON c'è "targa", vuota se è null → in quel caso salta tutto
-				.map(t -> t.trim().toLowerCase())                   // pulizia: " AB111CD " → "ab111cd" (stessa regola della create)
-				.filter(t -> !t.equals(mac.getTarga().getTarga()))  // tiene la targa solo se è DIVERSA da quella attuale della macchina;
-								// se è uguale svuota la scatola → niente da modificare, nessun errore
-				.ifPresent(t -> mac.getTarga().setTarga(            // se la scatola è ancora piena: cambio il testo DENTRO l'oggetto Targa già collegato
-						Optional.of(t)                              // nuova scatola con la targa pulita (qui non è mai null, quindi of e non ofNullable)
-								.filter(x -> !targaR.existsByTarga(x))  // tiene la targa solo se NON esiste già nel DB (né su macchine né su moto)
-								.orElseThrow(() -> new AcademyException("targa-exist"))));  // se il filter l'ha scartata (già usata) → errore e rollback;
-								// altrimenti restituisce la targa, che finisce in setTarga
+		
+		// 3. targa: la aggiorna TargaImpl (id della targa collegata + testo nuovo)
+		if (req.getTarga() != null)
+			targaService.update(TargaReq.builder().id(mac.getTarga().getId()).targa(req.getTarga()).build());
+
+		veicoliS.update(mac.getVeicolo(), req);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Integer id) throws Exception {
-		log.debug("Eliminazione macchina{}", id);	
-		
-		Macchina mac = macR.findById(id)
-				.orElseThrow(() -> new AcademyException("macchina-ntfnd"));
+		log.debug("Eliminazione macchina{}", id);
+
+		Macchina mac = macR.findById(id).orElseThrow(() -> new AcademyException("macchina-ntfnd"));
 		veR.delete(mac.getVeicolo());
 		
 		
@@ -107,11 +103,10 @@ public class MacchinaImpl  implements IMacchinaService{
 	@Override
 	public List<MacchinaDTO> list() throws Exception {
 		log.debug("Lista delle macchine");
-		
-		List <Macchina> lM = macR.findAll(Sort.by("veicolo.marca.nome"));
-		
+
+		List<Macchina> lM = macR.findAll(Sort.by("veicolo.marca.nome"));
+
 		return MacchinaMap.buildMacchinaDTOs(lM);
 	}
 
-	
 }
