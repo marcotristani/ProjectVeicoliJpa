@@ -1,5 +1,6 @@
 package com.betacom.veicoli.jpa.services.implementations;
 
+import java.security.PrivateKey;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import com.betacom.veicoli.jpa.mapper.BiciMap;
 import com.betacom.veicoli.jpa.models.Bici;
 import com.betacom.veicoli.jpa.models.Freni;
 import com.betacom.veicoli.jpa.models.TipoSospensione;
+import com.betacom.veicoli.jpa.models.TipoVeicolo;
 import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IBiciRepository;
 import com.betacom.veicoli.jpa.repositories.IFreniRepository;
 import com.betacom.veicoli.jpa.repositories.ITipoSospensioneRepository;
+import com.betacom.veicoli.jpa.repositories.ITipoVeicoloRepository;
 import com.betacom.veicoli.jpa.services.interfaces.IBiciService;
 import com.betacom.veicoli.jpa.services.interfaces.IVeicoliService;
 
@@ -31,6 +34,7 @@ public class BiciImpl implements IBiciService{
 	private final IFreniRepository freniR;
 	private final ITipoSospensioneRepository sospensioniR;
 	private final IVeicoliService veiS;
+	private final ITipoVeicoloRepository tipoVR;
 	
 	@Override
 	@Transactional
@@ -40,7 +44,14 @@ public class BiciImpl implements IBiciService{
 		        .orElseThrow(() -> new AcademyException("freno-ntfnd"));
 		TipoSospensione sospensione = sospensioniR.findById(req.getIdTipoSospensione())
 				.orElseThrow(() -> new AcademyException("tipososp-ntfnd"));
-		Veicoli veicolo = veiS.create(req.getVeicolo());
+		
+		TipoVeicolo tipoVeicolo;
+		if(tipoVR.existsByTipo("bici"))
+		     tipoVeicolo = tipoVR.findByTipo("bici");
+		else
+			throw new AcademyException("tipoVeicolo-ntFnd");
+		
+		Veicoli veicolo = veiS.create(req, tipoVeicolo);
 		Bici bici = new Bici();
 		
 		bici.setFreno(freno);
@@ -70,7 +81,7 @@ public class BiciImpl implements IBiciService{
 		bici.setPieghevole(req.getPieghevole());
 		bici.setSospensione(sospensione);
 	
-		veiS.update(bici.getVeicolo().getId(), req.getVeicolo());
+		veiS.update(bici.getVeicolo().getId(), req);
 		
 		biciR.save(bici);
 	}
