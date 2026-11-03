@@ -12,5 +12,5 @@ public interface IVeicoliService {
 	void update(Veicoli v, VeicoliReq req) throws Exception;
 	void delete(Integer id) throws Exception;
 
-	List<VeicoliDTO> list() throws Exception;
+	List<VeicoliDTO> list(Integer id, String TipoVeicolo, String TipoCategoria) throws Exception;
 }

@@ -9,18 +9,29 @@ public class VeicoliMap {
 
     public static VeicoliDTO buildVeicoliDTO(Veicoli v) {
        
-        return VeicoliDTO.builder()
-                .id(v.getId())
-                .idTipoVeicolo(v.getTipoVeicolo().getId())
-                .tipoCategoriaId(v.getTipoCategoria().getId())
-                .idMarca(v.getMarca().getId())
-                .modello(v.getModello())
-                .TipoAlimentazioneId(v.getTipoAlimentazione().getId())
-                .idColore(v.getColore().getId())
-                .annoProduzione(v.getAnnoProduzione())
-                .data_inserimento(v.getDataInserimento())
-                .numeroRuote(v.getNRuote())
-                .build();
+    	 VeicoliDTO.VeicoliDTOBuilder builder = VeicoliDTO.builder()
+                 .id(v.getId())
+                 .idTipoVeicolo(v.getTipoVeicolo().getId())
+                 .tipoCategoriaId(v.getTipoCategoria().getId())
+                 .idMarca(v.getMarca().getId())
+                 .modello(v.getModello())
+                 .TipoAlimentazioneId(v.getTipoAlimentazione().getId())
+                 .idColore(v.getColore().getId())
+                 .annoProduzione(v.getAnnoProduzione())
+                 .data_inserimento(v.getDataInserimento())
+                 .numeroRuote(v.getNRuote());
+
+         
+         if (v.getMoto() != null) {
+             builder.moto(MotoMap.buildMotoDTO(v.getMoto()));
+         }
+
+         // Attributi specifici della bici
+         if (v.getBici() != null) {
+             builder.bici(BiciMap.buildBiciDTO(v.getBici()));
+         }
+
+         return builder.build();
     }
     
     public static List<VeicoliDTO> buildVeicoliDTO (List<Veicoli> lV){

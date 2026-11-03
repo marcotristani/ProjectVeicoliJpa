@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.veicoli.jpa.dto.input.VeicoliReq;
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
 import com.betacom.veicoli.jpa.exceptions.AcademyException;
+import com.betacom.veicoli.jpa.mapper.VeicoliMap;
 import com.betacom.veicoli.jpa.models.TipoVeicolo;
 import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IColoreRepository;
@@ -90,9 +91,10 @@ public class VeicoliImpl implements IVeicoliService{
 	}
 	
 	@Override
-	public List<VeicoliDTO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VeicoliDTO> list(Integer id, String TipoVeicolo, String TipoCategoria) throws Exception {
+		log.debug("listByFilters");
+		List<VeicoliDTO> lS = VeicoliMap.buildVeicoliDTO(veiR.list(id, TipoVeicolo, TipoCategoria));
+		return lS;
 	}
 
 
