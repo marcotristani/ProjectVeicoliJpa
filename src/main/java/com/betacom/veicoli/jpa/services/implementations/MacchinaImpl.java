@@ -70,6 +70,7 @@ public class MacchinaImpl implements IMacchinaService {
 		m.setTarga(t);
 		macR.save(m);
 	}
+	
 
 	@Override
 	@Transactional
@@ -85,8 +86,11 @@ public class MacchinaImpl implements IMacchinaService {
 		// 3. targa: la aggiorna TargaImpl (id della targa collegata + testo nuovo)
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(mac.getTarga().getId()).targa(req.getTarga()).build());
-
-		veicoliS.update(mac.getVeicolo(), req);
+		
+		req.setIdVeicolo(mac.getVeicolo().getId());
+		Veicoli veicoloModificato = veicoliS.update(req);
+		mac.setVeicolo(veicoloModificato);
+		macR.save(mac);	
 	}
 
 	@Override
