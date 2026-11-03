@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.betacom.veicoli.jpa.dto.output.BiciDTO;
 import com.betacom.veicoli.jpa.models.Bici;
+import com.betacom.veicoli.jpa.models.Veicoli;
 
 public class BiciMap {
 	public static BiciDTO buildBiciDTO (Bici b) {
+		Veicoli v = b.getVeicolo();
 		return BiciDTO.builder()
 				.id(b.getId())
 				.idTipoSospensione(b.getSospensione().getId())
@@ -14,7 +16,15 @@ public class BiciMap {
 				.numeroMarce(b.getMarce())
 				.numeroCorone(b.getCorone())
 				.pieghevole(b.getPieghevole())
-				.veicolo(VeicoliMap.buildVeicoliDTO(b.getVeicolo()))
+				.idVeicolo(v.getId())
+                .idTipoVeicolo(v.getTipoVeicolo().getId())
+                .tipoCategoriaId(v.getTipoCategoria().getId())
+                .idMarca(v.getMarca().getId())
+                .modello(v.getModello())
+                .TipoAlimentazioneId(v.getTipoAlimentazione().getId())
+                .idColore(v.getColore().getId())
+                .annoProduzione(v.getAnnoProduzione())
+                .numeroRuote(v.getNRuote())
 				.build();
 	}
 	
