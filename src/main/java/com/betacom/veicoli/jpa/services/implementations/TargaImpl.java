@@ -25,7 +25,11 @@ public class TargaImpl implements ITargaService{
 	}
 
 	@Override
-	public void update(Integer id, TargaReq req) throws Exception {
+	public void update(TargaReq req) throws Exception {
+		Targa targa = targaRepository.findById(req.getId())
+		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
+		targa.setTarga(req.getTarga());
+		targaRepository.save(targa);
 		
 	}
 
