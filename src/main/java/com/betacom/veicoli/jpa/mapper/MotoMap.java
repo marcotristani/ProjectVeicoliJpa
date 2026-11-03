@@ -11,6 +11,7 @@ public class MotoMap {
 		return MotoDTO.builder()
 				.id(moto.getId())
 				.cc(moto.getCc())
+				.targa(moto.getTarga().getTarga())
 				.idVeicolo(moto.getVeicolo().getId())
                 .idTipoVeicolo(moto.getVeicolo().getTipoVeicolo().getId())
                 .tipoCategoriaId(moto.getVeicolo().getTipoCategoria().getId())
