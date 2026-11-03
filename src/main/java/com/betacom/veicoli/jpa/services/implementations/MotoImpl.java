@@ -58,10 +58,18 @@ public class MotoImpl implements IMotoService{
 	
 	@Override
 	public void update(MotoReq req) throws Exception {
-        log.debug("update");
+		log.debug("Update {}", req);
 		Moto moto = motoRepository.findById(req.getId())
 				.orElseThrow(() -> new AcademyException("moto-ntfnd"));
 		if(req.getCc()!= null) moto.setCc(req.getCc());
+		
+		targaService.update(TargaReq.builder()
+				.id(moto.getTarga().getId())
+				.targa(req.getTarga())
+				.build());
+		
+		
+		veicoliService.update(moto.getVeicolo(), req);
 		motoRepository.save(moto);	
 	}
 

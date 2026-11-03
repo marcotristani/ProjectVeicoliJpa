@@ -12,6 +12,15 @@ public class MotoMap {
 				.id(moto.getId())
 				.cc(moto.getCc())
 				.idVeicolo(moto.getVeicolo().getId())
+                .idTipoVeicolo(moto.getVeicolo().getTipoVeicolo().getId())
+                .tipoCategoriaId(moto.getVeicolo().getTipoCategoria().getId())
+                .idMarca(moto.getVeicolo().getMarca().getId())
+                .modello(moto.getVeicolo().getModello())
+                .TipoAlimentazioneId(moto.getVeicolo().getTipoAlimentazione().getId())
+                .idColore(moto.getVeicolo().getColore().getId())
+                .annoProduzione(moto.getVeicolo().getAnnoProduzione())
+                .data_inserimento(moto.getVeicolo().getDataInserimento())
+                .numeroRuote(moto.getVeicolo().getNRuote())
 				.build();
 	}
 	

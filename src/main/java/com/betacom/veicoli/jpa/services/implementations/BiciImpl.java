@@ -1,6 +1,5 @@
 package com.betacom.veicoli.jpa.services.implementations;
 
-import java.security.PrivateKey;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -81,7 +80,7 @@ public class BiciImpl implements IBiciService{
 		bici.setPieghevole(req.getPieghevole());
 		bici.setSospensione(sospensione);
 	
-		veiS.update(bici.getVeicolo().getId(), req);
+		veiS.update(bici.getVeicolo(), req);
 		
 		biciR.save(bici);
 	}
