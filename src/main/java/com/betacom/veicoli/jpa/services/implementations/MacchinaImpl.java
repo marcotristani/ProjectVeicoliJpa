@@ -48,12 +48,12 @@ public class MacchinaImpl implements IMacchinaService {
 		// 1. targa: pulita e libera? (controllo prima di qualsiasi INSERT)
 		String targa = req.getTarga().trim().toLowerCase();
 		if (targaR.existsByTarga(targa))
-			throw new AcademyException("targa-exist");
+			throw new AcademyException("targa-fnd");
 
 		// 2. tipo veicolo "macchina"
 		TipoVeicolo tipo = tipoveicoloR.findByTipo("macchina");
 		if (tipo == null)
-			throw new AcademyException("tipoVeicolo-ntfnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 
 		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq (req È
 		// anche una VeicoliReq)
@@ -87,7 +87,7 @@ public class MacchinaImpl implements IMacchinaService {
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(mac.getTarga().getId()).targa(req.getTarga()).build());
 		
-		req.setIdVeicolo(mac.getVeicolo().getId());
+		req.setIdVeicolo(mac.getVeicolo().getId()); // idveicolo lo recupero dalla macchina ritornata dal find(tra gli attributi ha oggetto veicolo)
 		Veicoli veicoloModificato = veicoliS.update(req);
 		mac.setVeicolo(veicoloModificato);
 		macR.save(mac);	
