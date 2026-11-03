@@ -1,17 +1,17 @@
 package com.betacom.veicoli.jpa.dto.output;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BiciDTO {
+public class BiciDTO extends VeicoliDTO{
 	
 	private Integer id;
 	private Integer idTipoSospensione;
