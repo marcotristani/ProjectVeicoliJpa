@@ -64,24 +64,32 @@ public class BiciImpl implements IBiciService{
 		
 	}
 
+
 	@Override
 	@Transactional
 	public void update(BiciReq req) throws Exception {
 		log.debug("Update {}", req);
-		Bici bici = biciR.findById(req.getId())
+		Bici bici = biciR.findById(req.getIdBici())
 		        .orElseThrow(() -> new AcademyException("bici-ntfnd"));
+		if(req.getIdFreno()!= null) {
 		Freni freno = freniR.findById(req.getIdFreno())
 		        .orElseThrow(() -> new AcademyException("freno-ntfnd"));
+		bici.setFreno(freno);
+
+		}
+		if(req.getIdTipoSospensione()!= null) {
 		TipoSospensione sospensione = sospensioniR.findById(req.getIdTipoSospensione())
 		        .orElseThrow(() -> new AcademyException("tipososp-ntfnd"));
-		bici.setFreno(freno);
-		bici.setCorone(req.getNumeroCorone());
-		bici.setMarce(req.getNumeroMarce());
-		bici.setPieghevole(req.getPieghevole());
 		bici.setSospensione(sospensione);
+
+		}
+		if(req.getNumeroCorone()!= null)bici.setCorone(req.getNumeroCorone());
+		if(req.getNumeroMarce()!= null)bici.setMarce(req.getNumeroMarce());
+		if(req.getPieghevole()!= null)bici.setPieghevole(req.getPieghevole());
 	
-		veiS.update(bici.getVeicolo(), req);
-		
+		req.setIdVeicolo(bici.getVeicolo().getId());
+		Veicoli veicoloModificato = veiS.update(req);
+		bici.setVeicolo(veicoloModificato);
 		biciR.save(bici);
 	}
 

@@ -13,7 +13,9 @@ import lombok.ToString;
 @ToString
 public class VeicoliReq {
 	
-	//@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
+	private Integer idVeicolo;
+	
+	@NotNull(groups = ValidationGroup.Create.class, message = "tipo-no-id")
 	private Integer idTipoVeicolo;
 
 	
@@ -35,8 +37,6 @@ public class VeicoliReq {
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "annoprod-ntfnd")
 	private Integer  annoProduzione;
-
-
 
 	@NotNull(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
 	private Integer  numeroRuote;
