@@ -7,4 +7,6 @@ import com.betacom.veicoli.jpa.models.TipoVeicolo;
 public interface ITipoVeicoloRepository extends JpaRepository<TipoVeicolo, Integer>{
 
 	Boolean existsByTipo(String tipo);
+	
+	TipoVeicolo findByTipo(String tipo);
 }
