@@ -29,8 +29,8 @@ public class ListImpl implements IListService{
 	private final IBiciRepository biciRepository;
 	private final IVeicoliRepository veicoliRepository;
 
-	public List<VeicoliDTO> printList() {
-	    List<Veicoli> veicoli = veicoliRepository.findAll();
+	public List<VeicoliDTO> printList(String tipoVeicolo, String tipoCategoria) {
+	    List<Veicoli> veicoli = veicoliRepository.list(tipoVeicolo,tipoCategoria);
 	    
 	    List<VeicoliDTO> veicoliDTO= new ArrayList<VeicoliDTO>();
 	    veicoli.forEach(veicolo -> {
@@ -46,6 +46,7 @@ public class ListImpl implements IListService{
 	    
 	    return veicoliDTO;
 	}
+
 
 }
 
