@@ -8,16 +8,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.veicoli.jpa.dto.input.MacchinaReq;
+import com.betacom.veicoli.jpa.dto.input.TargaReq;
 import com.betacom.veicoli.jpa.dto.output.MacchinaDTO;
 import com.betacom.veicoli.jpa.exceptions.AcademyException;
 import com.betacom.veicoli.jpa.mapper.MacchinaMap;
 import com.betacom.veicoli.jpa.models.Macchina;
 import com.betacom.veicoli.jpa.models.Targa;
+import com.betacom.veicoli.jpa.models.TipoVeicolo;
 import com.betacom.veicoli.jpa.models.Veicoli;
 import com.betacom.veicoli.jpa.repositories.IMacchinaRepository;
 import com.betacom.veicoli.jpa.repositories.ITargaRepository;
+import com.betacom.veicoli.jpa.repositories.ITipoVeicoloRepository;
 import com.betacom.veicoli.jpa.repositories.IVeicoliRepository;
 import com.betacom.veicoli.jpa.services.interfaces.IMacchinaService;
+import com.betacom.veicoli.jpa.services.interfaces.ITargaService;
 import com.betacom.veicoli.jpa.services.interfaces.IVeicoliService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,33 +37,38 @@ public class MacchinaImpl  implements IMacchinaService{
 	private final ITargaRepository targaR;
 	private final IVeicoliService veicoliS;
 	private final IVeicoliRepository veR;
-	
+	private final ITipoVeicoloRepository tipoveicoloR;
+	private final ITargaService targaService;
 	
 	
 	@Transactional
 	@Override
 	public void create(MacchinaReq req) throws Exception {
-		log.debug("Creazione macchina{}", req);
-		
+		log.debug("Creazione macchina {}", req);
+
+		// 1. targa: pulita e libera? (controllo prima di qualsiasi INSERT)
 		String targa = req.getTarga().trim().toLowerCase();
-		if(targaR.existsByTarga(targa))
+		if (targaR.existsByTarga(targa))
 			throw new AcademyException("targa-exist");
-		
-		Veicoli veicolo = veicoliS.create(req.getVeicolo());
-		
-		Targa t = new Targa();
-		t.setTarga(targa);
-		targaR.save(t);
-		
+
+		// 2. tipo veicolo "macchina"
+		TipoVeicolo tipo = tipoveicoloR.findByTipo("macchina");
+		if (tipo == null)
+			throw new AcademyException("tipoVeicolo-ntfnd");
+
+		// 3. padre: lo crea VeicoliImpl con i dati della scatola piccola
+		Veicoli veicolo = veicoliS.create(req.getVeicolo(), tipo);
+
+		// 4. targa: salvata prima della macchina (targa_id sta in macchine)
+		Targa t = targaService.create(TargaReq.builder().targa(targa).build());	
+
+		// 5. macchina, collegata a padre e targa (lati owner)
 		Macchina m = new Macchina();
 		m.setCc(req.getCc());
 		m.setPorte(req.getNumeroPorte());
 		m.setVeicolo(veicolo);
 		m.setTarga(t);
 		macR.save(m);
-		
-		
-		
 	}
 
 	@Override
