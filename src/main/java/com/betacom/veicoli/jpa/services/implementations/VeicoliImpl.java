@@ -44,7 +44,7 @@ public class VeicoliImpl implements IVeicoliService{
 		v.setMarca(marR.findById(req.getIdMarca())
 			.orElseThrow(() -> new AcademyException("marca-ntfnd")));
 		v.setTipoAlimentazione(alimR.findById(req.getTipoAlimentazioneId())
-				.orElseThrow(() -> new AcademyException("alim-ntfnd")));
+				.orElseThrow(() -> new AcademyException("tipoalim-ntfnd")));
 		v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
 				.orElseThrow(() -> new AcademyException("cat-ntfnd")));
 		v.setTipoVeicolo(tipoVeicolo);
@@ -57,26 +57,25 @@ public class VeicoliImpl implements IVeicoliService{
 
 	@Transactional
 	@Override
-	public void update(Veicoli v, VeicoliReq req) throws Exception {
+	public Veicoli update(VeicoliReq req) throws Exception {
 		log.debug("Update {}", req);
 
-		//Veicoli v = veiR.findById(idVeicolo)
-		       // .orElseThrow(() -> new AcademyException("veicolo-ntfnd"));
-		v.setColore(colR.findById(req.getIdColore())
+		Veicoli v = veiR.findById(req.getIdVeicolo())
+		       .orElseThrow(() -> new AcademyException("veicolo-ntfnd"));
+		if(req.getIdColore()!= null) v.setColore(colR.findById(req.getIdColore())
 		        .orElseThrow(() -> new AcademyException("colore-ntfnd")));
-		v.setMarca(marR.findById(req.getIdMarca())
+		if(req.getIdMarca()!= null)  v.setMarca(marR.findById(req.getIdMarca())
 		        .orElseThrow(() -> new AcademyException("marca-ntfnd")));
-		v.setTipoAlimentazione(alimR.findById(req.getTipoAlimentazioneId())
+		if(req.getTipoAlimentazioneId()!= null) v.setTipoAlimentazione(alimR.findById(req.getTipoAlimentazioneId())
 		        .orElseThrow(() -> new AcademyException("alim-ntfnd")));
-		v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
-		        .orElseThrow(() -> new AcademyException("cat-ntfnd")));
-		v.setTipoVeicolo(tipoVeicoloR.findById(req.getIdTipoVeicolo())
+		if(req.getTipoCategoriaID()!= null) v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
+				  .orElseThrow(() -> new AcademyException("cat-ntfnd")));
+		if(req.getIdTipoVeicolo()!= null) v.setTipoVeicolo(tipoVeicoloR.findById(req.getIdTipoVeicolo())
 		        .orElseThrow(() -> new AcademyException("tipoV-ntfnd")));
-		v.setModello(req.getModello());
-		v.setAnnoProduzione(req.getAnnoProduzione());
-		v.setNRuote(req.getNumeroRuote());
-
-		veiR.save(v);
+		if(req.getModello()!= null) v.setModello(req.getModello());
+		if(req.getAnnoProduzione()!= null) v.setAnnoProduzione(req.getAnnoProduzione());
+		if(req.getNumeroRuote()!= null) v.setNRuote(req.getNumeroRuote());
+		return veiR.save(v);
 	}
 	
 	@Transactional

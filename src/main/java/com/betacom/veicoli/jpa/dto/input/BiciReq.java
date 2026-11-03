@@ -1,6 +1,5 @@
 package com.betacom.veicoli.jpa.dto.input;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +10,7 @@ import lombok.ToString;
 @ToString
 public class BiciReq extends VeicoliReq{
 	@NotNull(groups = ValidationGroup.Update.class, message = "bici-no-id" )
-	private Integer id;
-	
-	
+	private Integer idBici;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "nc-ntfnd")
 	private Integer numeroCorone;
@@ -29,5 +26,4 @@ public class BiciReq extends VeicoliReq{
 	@NotNull(groups = ValidationGroup.Create.class, message = "freno-no-id")
 	private Integer idFreno;
 	
-	private Integer idVeicolo;
 }

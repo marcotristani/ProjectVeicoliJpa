@@ -29,7 +29,7 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 	public void create(TipoAlimentazioneReq req) throws Exception {
 		log.debug("create {}", req);
 		if (tipoAlimR.existsByNome(req.getNome().toLowerCase()))
-			throw new AcademyException("tipoAlim-fnd");
+			throw new AcademyException("tipoalim-fnd");
 		TipoAlimentazione alim = new TipoAlimentazione();
 		alim.setNome(req.getNome().toLowerCase());
 		tipoAlimR.save(alim);
@@ -41,10 +41,10 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 	public void update(TipoAlimentazioneReq req) throws Exception {
 		log.debug("Update {}", req);
 		TipoAlimentazione alim = tipoAlimR.findById(req.getId())
-				.orElseThrow(() -> new AcademyException("tipoAlim-ntfnd"));
+				.orElseThrow(() -> new AcademyException("tipoalim-ntfnd"));
 		if (req.getNome() != null && !req.getNome().equalsIgnoreCase(alim.getNome())) {
 			if (tipoAlimR.existsByNome(req.getNome()))
-				throw new AcademyException("tipoAlim-fnd");
+				throw new AcademyException("tipoalim-fnd");
 			alim.setNome(req.getNome().toLowerCase());
 		}
 		tipoAlimR.save(alim);
@@ -55,7 +55,7 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 	public void delete(Integer id) throws Exception {
 		log.debug("Delete {}", id);	
 		TipoAlimentazione alim = tipoAlimR.findById(id)
-				.orElseThrow(() -> new AcademyException("tipoAlim-ntfnd"));
+				.orElseThrow(() -> new AcademyException("tipoalim-ntfnd"));
 		tipoAlimR.delete(alim);
 	}
 

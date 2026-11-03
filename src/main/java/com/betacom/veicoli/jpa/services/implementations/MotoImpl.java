@@ -42,7 +42,7 @@ public class MotoImpl implements IMotoService{
 		if(tipoVeicoloRepository.existsByTipo("moto"))
 		     tipoVeicolo = tipoVeicoloRepository.findByTipo("moto");
 		else
-			throw new AcademyException("tipoVeicolo-noFnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 			
 		Veicoli veicolo = veicoliService.create(req, tipoVeicolo);
 		
@@ -55,24 +55,35 @@ public class MotoImpl implements IMotoService{
 		motoRepository.save(moto);	
 	}
 
-	
+	@Transactional
 	@Override
 	public void update(MotoReq req) throws Exception {
 		log.debug("Update {}", req);
-		Moto moto = motoRepository.findById(req.getId())
+		Moto moto = motoRepository.findById(req.getIdMoto())
 				.orElseThrow(() -> new AcademyException("moto-ntfnd"));
 		if(req.getCc()!= null) moto.setCc(req.getCc());
 		
-		targaService.update(TargaReq.builder()
+		if(req.getTarga() != null && !req.getTarga().trim().equalsIgnoreCase(moto.getTarga().getTarga())) {
+			targaService.update(TargaReq.builder()
 				.id(moto.getTarga().getId())
 				.targa(req.getTarga())
 				.build());
+		}
+		
+		Targa targa = new Targa();
+		if (req.getTarga() != null)
+			targa = targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga()).build());
 		
 		
-		veicoliService.update(moto.getVeicolo(), req);
+		req.setIdVeicolo(moto.getVeicolo().getId());
+		Veicoli veicoloModificato = veicoliService.update(req);
+		
+		moto.setTarga(targa);
+		moto.setVeicolo(veicoloModificato);
 		motoRepository.save(moto);	
 	}
 
+	@Transactional
 	@Override
 	public void delete(Integer id) throws Exception {
 		log.debug("Delete bici con id {}", id);
@@ -83,6 +94,7 @@ public class MotoImpl implements IMotoService{
 		
 	}
 
+	
 	@Override
 	public List<MotoDTO> list() throws Exception {
 		List<Moto> lM = motoRepository.findAll();
