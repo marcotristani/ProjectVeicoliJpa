@@ -3,6 +3,7 @@ package com.betacom.veicoli.jpa.services.implementations;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
@@ -29,8 +30,22 @@ public class ListImpl implements IListService{
 	private final IBiciRepository biciRepository;
 	private final IVeicoliRepository veicoliRepository;
 
-	public List<VeicoliDTO> printList() {
-	    List<Veicoli> veicoli = veicoliRepository.findAll();
+	public List<VeicoliDTO> printList(String tipoVeicolo,
+			String tipoCategoria, String modello,
+			Integer annoProduzione, Integer nRuote,
+			String tipoAlimentazione,String colore,
+			String marca, Integer cc,
+			Integer porte, String targa,
+			String marce, String corone,
+			Boolean pieghevole, String freno, String sospensione) {
+	    List<Veicoli> veicoli = veicoliRepository.list(tipoVeicolo,
+				tipoCategoria,modello,
+				annoProduzione, nRuote,
+				tipoAlimentazione, colore,
+				marca, cc,
+				porte, targa,
+				marce, corone,
+				pieghevole, freno, sospensione);
 	    
 	    List<VeicoliDTO> veicoliDTO= new ArrayList<VeicoliDTO>();
 	    veicoli.forEach(veicolo -> {
@@ -46,6 +61,7 @@ public class ListImpl implements IListService{
 	    
 	    return veicoliDTO;
 	}
+
 
 }
 

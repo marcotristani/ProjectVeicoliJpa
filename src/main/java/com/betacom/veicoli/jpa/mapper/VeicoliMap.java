@@ -2,7 +2,9 @@ package com.betacom.veicoli.jpa.mapper;
 
 import java.util.List;
 
+import com.betacom.veicoli.jpa.dto.output.BiciDTO;
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
+import com.betacom.veicoli.jpa.models.Bici;
 import com.betacom.veicoli.jpa.models.Veicoli;
 
 public class VeicoliMap {

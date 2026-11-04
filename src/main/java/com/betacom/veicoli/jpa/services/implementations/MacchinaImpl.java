@@ -50,13 +50,16 @@ public class MacchinaImpl implements IMacchinaService {
 			throw new AcademyException("targa-fnd");
 
 		// 2. tipo veicolo "macchina"
-		TipoVeicolo tipo = tipoveicoloR.findByTipo("macchina");
-		if (tipo == null)
+		
+		TipoVeicolo tipoVeicolo;
+		if(tipoveicoloR.existsByTipo("macchina"))
+		     tipoVeicolo = tipoveicoloR.findByTipo("macchina");
+		else
 			throw new AcademyException("tipoveicolo-ntfnd");
 
 		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq (req È
 		// anche una VeicoliReq)
-		Veicoli veicolo = veicoliS.create(req, tipo);
+		Veicoli veicolo = veicoliS.create(req, tipoVeicolo);
 
 		// 4. targa: salvata prima della macchina (targa_id sta in macchine)
 		Targa t = targaService.create(TargaReq.builder().targa(targa).build());

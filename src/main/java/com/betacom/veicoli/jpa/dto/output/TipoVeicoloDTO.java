@@ -13,7 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TipoVeicoloDTO {
 	private Integer id;
-	private Boolean status;
 	private String nome;
-	private String pattern;
 }
