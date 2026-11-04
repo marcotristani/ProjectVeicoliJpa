@@ -54,7 +54,7 @@ public class MacchinaImpl implements IMacchinaService {
 		
 		TipoVeicolo tipoVeicolo;
 		if(tipoveicoloR.existsByTipo("macchina"))
-		     tipoVeicolo = tipoveicoloR.findByTipo("moto");
+		     tipoVeicolo = tipoveicoloR.findByTipo("macchina");
 		else
 			throw new AcademyException("tipoveicolo-ntfnd");
 

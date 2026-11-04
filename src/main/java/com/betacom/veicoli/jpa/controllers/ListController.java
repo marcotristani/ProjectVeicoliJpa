@@ -25,9 +25,30 @@ public class ListController {
     @GetMapping("/list")
     public ResponseEntity<List<VeicoliDTO>> list(
     		@RequestParam(required = false) String tipoVeicolo,
-    		@RequestParam(required = false) String tipoCategoria
+    		@RequestParam(required = false) String tipoCategoria,
+    		@RequestParam(required = false) String modello,
+    		@RequestParam(required = false) Integer annoProduzione,
+    		@RequestParam(required = false) Integer nRuote,
+    		@RequestParam(required = false) String tipoAlimentazione,
+    		@RequestParam(required = false) String colore,
+    		@RequestParam(required = false) String marca,
+    		@RequestParam(required = false) Integer cc,
+    		@RequestParam(required = false) Integer porte,
+    		@RequestParam(required = false) String targa,
+    		@RequestParam(required = false) String marce,
+    		@RequestParam(required = false) String corone,
+    		@RequestParam(required = false) Boolean pieghevole,
+    		@RequestParam(required = false) String freno,
+    		@RequestParam(required = false) String sospensione
     		) throws Exception {
-        return ResponseEntity.ok(listService.printList(tipoVeicolo,tipoCategoria));
+        return ResponseEntity.ok(listService.printList(tipoVeicolo,
+				tipoCategoria,modello,
+				annoProduzione, nRuote,
+				tipoAlimentazione, colore,
+				marca, cc,
+				porte, targa,
+				marce, corone,
+				pieghevole, freno, sospensione));
     }
 
 }
