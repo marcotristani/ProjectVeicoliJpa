@@ -32,7 +32,7 @@ public class MarcaImpl implements IMarcaService {
         String nome = normalizzaNome(req.getNome());
 
         if (marcaR.existsByNomeIgnoreCase(nome)) {
-            throw new AcademyException("marca-exist");
+            throw new AcademyException("marca-fnd");
         }
 
         Marca marca = new Marca();
@@ -51,7 +51,7 @@ public class MarcaImpl implements IMarcaService {
             String nome = normalizzaNome(req.getNome());
             if (!nome.equalsIgnoreCase(marca.getNome())
                     && marcaR.existsByNomeIgnoreCase(nome)) {
-                throw new AcademyException("marca-exist");
+                throw new AcademyException("marca-fnd");
             }
             marca.setNome(nome);
         }
@@ -84,6 +84,6 @@ public class MarcaImpl implements IMarcaService {
         if (nome == null || nome.isBlank()) {
             throw new AcademyException("marca-no-nome");
         }
-        return nome.trim().toUpperCase(Locale.ROOT);
+        return nome.trim().toLowerCase(Locale.ROOT);
     }
 }

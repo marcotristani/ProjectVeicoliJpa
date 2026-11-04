@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class TipoVeicoloReq {
-	@NotNull(groups = ValidationGroup.Update.class, message = "tipov-no-id")
+	@NotNull(groups = ValidationGroup.Update.class, message = "tipoveicolo-no-id")
 	private Integer id;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipoveicolo-ntfnd")

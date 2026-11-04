@@ -48,7 +48,7 @@ public class BiciImpl implements IBiciService{
 		if(tipoVR.existsByTipo("bici"))
 		     tipoVeicolo = tipoVR.findByTipo("bici");
 		else
-			throw new AcademyException("tipoVeicolo-ntFnd");
+			throw new AcademyException("tipoveicolo-ntfnd");
 		
 		Veicoli veicolo = veiS.create(req, tipoVeicolo);
 		Bici bici = new Bici();

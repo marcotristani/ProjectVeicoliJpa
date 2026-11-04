@@ -28,7 +28,7 @@ public class FreniImpl implements IFreniService {
     public void create(FreniReq req) throws Exception {
         log.debug("create {}", req);
         if (freniR.existsByTipo(req.getTipo())) {
-            throw new AcademyException("freni-exist");
+            throw new AcademyException("freno-fnd");
         }
         Freni f = new Freni();
         f.setTipo(req.getTipo());
@@ -40,11 +40,11 @@ public class FreniImpl implements IFreniService {
     public void update(FreniReq req) throws Exception {
         log.debug("update {}", req);
         Freni f = freniR.findById(req.getId())
-                .orElseThrow(() -> new AcademyException("freni-ntfnd"));
+                .orElseThrow(() -> new AcademyException("freno-ntfnd"));
 
         if (req.getTipo() != null) {
             if (freniR.existsByTipo(req.getTipo())) {
-                throw new AcademyException("freni-exist");
+                throw new AcademyException("freno-fnd");
             }
             f.setTipo(req.getTipo());
         }
@@ -56,7 +56,7 @@ public class FreniImpl implements IFreniService {
     public void delete(Integer id) throws Exception {
         log.debug("delete {}", id);
         Freni f = freniR.findById(id)
-                .orElseThrow(() -> new AcademyException("freni-ntfnd"));
+                .orElseThrow(() -> new AcademyException("freno-ntfnd"));
         freniR.delete(f);
     }
 

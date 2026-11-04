@@ -39,9 +39,9 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	@Override
 	public void update(TipoVeicoloReq req) throws Exception {
 		log.debug("update {}", req);	
-		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(req.getId()).orElseThrow(()-> new AcademyException("Tipo Veicolo non trovato"));
+		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(req.getId()).orElseThrow(()-> new AcademyException("tipoveicolo-ntfnd"));
 		if (tipoVeicoloRepository.existsByTipo(req.getNome()))
-			throw new AcademyException("tipoVeicolo-fnd");
+			throw new AcademyException("tipoveicolo-fnd");
 		if(req.getNome() != null) tipoVeicolo.setTipo(req.getNome());
 		
 		tipoVeicoloRepository.save(tipoVeicolo);	
@@ -51,7 +51,7 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	@Override
 	public void delete(Integer id) throws Exception {
 		log.debug("delete tipo veicolo {} ", id);
-		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(id).orElseThrow(()-> new AcademyException("Tipo Veicolo non trovato"));
+		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(id).orElseThrow(()-> new AcademyException("tipoveicolo-ntfnd"));
 		tipoVeicoloRepository.delete(tipoVeicolo);
 		
 	}

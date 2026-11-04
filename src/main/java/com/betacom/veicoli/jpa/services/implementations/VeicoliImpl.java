@@ -46,7 +46,7 @@ public class VeicoliImpl implements IVeicoliService{
 		v.setTipoAlimentazione(alimR.findById(req.getTipoAlimentazioneId())
 				.orElseThrow(() -> new AcademyException("tipoalim-ntfnd")));
 		v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
-				.orElseThrow(() -> new AcademyException("cat-ntfnd")));
+				.orElseThrow(() -> new AcademyException("tipocat-ntfnd")));
 		v.setTipoVeicolo(tipoVeicolo);
 		v.setModello(req.getModello());
 		v.setAnnoProduzione(req.getAnnoProduzione());
@@ -67,9 +67,9 @@ public class VeicoliImpl implements IVeicoliService{
 		if(req.getIdMarca()!= null)  v.setMarca(marR.findById(req.getIdMarca())
 		        .orElseThrow(() -> new AcademyException("marca-ntfnd")));
 		if(req.getTipoAlimentazioneId()!= null) v.setTipoAlimentazione(alimR.findById(req.getTipoAlimentazioneId())
-		        .orElseThrow(() -> new AcademyException("alim-ntfnd")));
+		        .orElseThrow(() -> new AcademyException("tipoalim-ntfnd")));
 		if(req.getTipoCategoriaID()!= null) v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
-				  .orElseThrow(() -> new AcademyException("cat-ntfnd")));
+				  .orElseThrow(() -> new AcademyException("tipocat-ntfnd")));
 		if(req.getModello()!= null) v.setModello(req.getModello());
 		if(req.getAnnoProduzione()!= null) v.setAnnoProduzione(req.getAnnoProduzione());
 		if(req.getNumeroRuote()!= null) v.setNRuote(req.getNumeroRuote());

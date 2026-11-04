@@ -14,7 +14,7 @@ public class FreniReq {
 	@NotNull(groups = ValidationGroup.Update.class, message = "freno-no-id" )
 	private Integer id;
 	
-	@NotNull(groups = ValidationGroup.Create.class, message = "freni-ntfnd")
-	@NotBlank(groups = ValidationGroup.Create.class, message = "freni-ntfnd")
+	@NotNull(groups = ValidationGroup.Create.class, message = "freno-ntfnd")
+	@NotBlank(groups = ValidationGroup.Create.class, message = "freno-ntfnd")
     private String tipo;
 }

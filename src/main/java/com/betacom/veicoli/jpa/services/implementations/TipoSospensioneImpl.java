@@ -28,7 +28,7 @@ public class TipoSospensioneImpl implements ITipoSospensioneService {
     public void create(TipoSospenzioneReq req) throws Exception {
         log.debug("create {}", req);
         if (tipoSospR.existsByNome(req.getNome())) {
-            throw new AcademyException("tipososp-exist");
+            throw new AcademyException("tipososp-fnd");
         }
         TipoSospensione ts = new TipoSospensione();
         ts.setNome(req.getNome());
@@ -46,7 +46,7 @@ public class TipoSospensioneImpl implements ITipoSospensioneService {
 
         if (req.getNome() != null) {
             if (!ts.getNome().equals(req.getNome()) && tipoSospR.existsByNome(req.getNome())) {
-                throw new AcademyException("tipososp-exist");
+                throw new AcademyException("tipososp-fnd");
             }
             ts.setNome(req.getNome());
         }
