@@ -70,8 +70,6 @@ public class VeicoliImpl implements IVeicoliService{
 		        .orElseThrow(() -> new AcademyException("alim-ntfnd")));
 		if(req.getTipoCategoriaID()!= null) v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
 				  .orElseThrow(() -> new AcademyException("cat-ntfnd")));
-		if(req.getIdTipoVeicolo()!= null) v.setTipoVeicolo(tipoVeicoloR.findById(req.getIdTipoVeicolo())
-		        .orElseThrow(() -> new AcademyException("tipoV-ntfnd")));
 		if(req.getModello()!= null) v.setModello(req.getModello());
 		if(req.getAnnoProduzione()!= null) v.setAnnoProduzione(req.getAnnoProduzione());
 		if(req.getNumeroRuote()!= null) v.setNRuote(req.getNumeroRuote());
