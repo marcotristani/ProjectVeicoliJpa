@@ -35,8 +35,8 @@ public class ListController {
     		@RequestParam(required = false) Integer cc,
     		@RequestParam(required = false) Integer porte,
     		@RequestParam(required = false) String targa,
-    		@RequestParam(required = false) String marce,
-    		@RequestParam(required = false) String corone,
+    		@RequestParam(required = false) Integer marce,
+    		@RequestParam(required = false) Integer corone,
     		@RequestParam(required = false) Boolean pieghevole,
     		@RequestParam(required = false) String freno,
     		@RequestParam(required = false) String sospensione
