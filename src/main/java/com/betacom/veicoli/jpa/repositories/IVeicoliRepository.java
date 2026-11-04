@@ -23,8 +23,8 @@ public interface IVeicoliRepository extends JpaRepository<Veicoli, Integer>{
 			@Param("cc") Integer cc,
 			@Param("porte") Integer porte,
 			@Param("targa") String targa,
-			@Param("marce") String marce,
-			@Param("corone") String corone,
+			@Param("marce") Integer marce,
+			@Param("corone") Integer corone,
 			@Param("pieghevole") Boolean pieghevole,
 			@Param("freno") String freno,
 			@Param("sospensione") String sospensione

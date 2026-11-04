@@ -36,7 +36,7 @@ public class ListImpl implements IListService{
 			String tipoAlimentazione,String colore,
 			String marca, Integer cc,
 			Integer porte, String targa,
-			String marce, String corone,
+			Integer marce, Integer corone,
 			Boolean pieghevole, String freno, String sospensione) {
 	    List<Veicoli> veicoli = veicoliRepository.list(tipoVeicolo,
 				tipoCategoria,modello,
