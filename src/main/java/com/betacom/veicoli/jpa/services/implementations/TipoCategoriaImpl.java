@@ -58,6 +58,10 @@ public class TipoCategoriaImpl implements ITipoCategoriaService {
 		TipoCategoria cat = tipoCatR.findById(id)
 				.orElseThrow(() -> new AcademyException("tipocat-ntfnd"));
 
+		if (cat.getVeicoli() != null && !cat.getVeicoli().isEmpty()) {
+            throw new AcademyException("TipoCategoria-con-veicoli");
+        }
+		
 		tipoCatR.delete(cat);
 	}
 

@@ -34,7 +34,6 @@ public class VeicoliImpl implements IVeicoliService{
 	private final IMarcaRepository marR;
 	private final ITipoAlimentazioneRepository alimR;
 	private final ITipoCategoriaRepository catR;
-	private final ITipoVeicoloRepository tipoVeicoloR;
 	
 	@Transactional
 	@Override

@@ -57,6 +57,10 @@ public class FreniImpl implements IFreniService {
         log.debug("delete {}", id);
         Freni f = freniR.findById(id)
                 .orElseThrow(() -> new AcademyException("freno-ntfnd"));
+        if (f.getBici() != null && !f.getBici().isEmpty()) {
+            throw new AcademyException("Freni-con-bici");
+        }
+        
         freniR.delete(f);
     }
 

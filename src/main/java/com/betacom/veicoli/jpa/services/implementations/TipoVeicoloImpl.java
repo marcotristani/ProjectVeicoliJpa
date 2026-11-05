@@ -52,6 +52,10 @@ public class TipoVeicoloImpl implements ITipoVeicoloService{
 	public void delete(Integer id) throws Exception {
 		log.debug("delete tipo veicolo {} ", id);
 		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findById(id).orElseThrow(()-> new AcademyException("tipoveicolo-ntfnd"));
+		if (tipoVeicolo.getVeicoli() != null && !tipoVeicolo.getVeicoli().isEmpty()) {
+            throw new AcademyException("TipoVeicolo-con-veicoli");
+        }
+		
 		tipoVeicoloRepository.delete(tipoVeicolo);
 		
 	}

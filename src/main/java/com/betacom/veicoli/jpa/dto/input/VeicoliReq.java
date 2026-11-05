@@ -40,8 +40,8 @@ public class VeicoliReq {
 	private Integer  annoProduzione;
 
 	@NotNull(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
-	@Min(value = 2, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
-	@Max(value = 6, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
+	@Min(value = 2, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote-invalid")
+	@Max(value = 6, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote-invalid")
 	private Integer  numeroRuote;
 	
 	

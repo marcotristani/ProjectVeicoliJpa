@@ -59,6 +59,10 @@ public class TipoSospensioneImpl implements ITipoSospensioneService {
         log.debug("delete {}", id);
         TipoSospensione ts = tipoSospR.findById(id)
                 .orElseThrow(() -> new AcademyException("tipososp-ntfnd"));
+        
+        if (ts.getBici() != null && !ts.getBici().isEmpty()) {
+            throw new AcademyException("TipoSospensione-con-bici");
+        }
         tipoSospR.delete(ts);
     }
 
