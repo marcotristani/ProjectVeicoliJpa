@@ -87,8 +87,9 @@ public class BiciImpl implements IBiciService{
 		if(req.getNumeroMarce()!= null)bici.setMarce(req.getNumeroMarce());
 		if(req.getPieghevole()!= null)bici.setPieghevole(req.getPieghevole());
 	
-		req.setIdVeicolo(bici.getVeicolo().getId());
-		Veicoli veicoloModificato = veiS.update(req);
+		//req.setIdVeicolo(bici.getVeicolo().getId());
+		Integer idVeicolo=bici.getVeicolo().getId();
+		Veicoli veicoloModificato = veiS.update(req,idVeicolo);
 		bici.setVeicolo(veicoloModificato);
 		biciR.save(bici);
 	}

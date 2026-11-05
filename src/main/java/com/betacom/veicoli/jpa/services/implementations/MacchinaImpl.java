@@ -81,8 +81,10 @@ public class MacchinaImpl implements IMacchinaService {
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(mac.getTarga().getId()).targa(req.getTarga()).build());
 		
-		req.setIdVeicolo(mac.getVeicolo().getId()); // idveicolo lo recupero dalla macchina ritornata dal find(tra gli attributi ha oggetto veicolo)
-		Veicoli veicoloModificato = veicoliS.update(req);
+		
+		//req.setIdVeicolo(mac.getVeicolo().getId()); // idveicolo lo recupero dalla macchina ritornata dal find(tra gli attributi ha oggetto veicolo)
+		Integer idVeicolo = mac.getVeicolo().getId();
+		Veicoli veicoloModificato = veicoliS.update(req,idVeicolo);
 		mac.setVeicolo(veicoloModificato);
 		macR.save(mac);	
 	}

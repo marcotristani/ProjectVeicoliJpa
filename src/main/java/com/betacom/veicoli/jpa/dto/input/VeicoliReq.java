@@ -15,9 +15,9 @@ import lombok.ToString;
 @ToString
 public class VeicoliReq {
 	
-	private Integer idVeicolo;
+	//private Integer idVeicolo;
 	
-	private Integer idTipoVeicolo;
+	//private Integer idTipoVeicolo;
 
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "tipocat-no-id")

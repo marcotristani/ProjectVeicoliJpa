@@ -9,7 +9,7 @@ import com.betacom.veicoli.jpa.models.Veicoli;
 
 public interface IVeicoliService {
 	Veicoli create(VeicoliReq req, TipoVeicolo tipoVeicolo) throws Exception;
-	Veicoli update(VeicoliReq req) throws Exception;
+	Veicoli update(VeicoliReq req, Integer idVeicolo) throws Exception;
 	void delete(Integer id) throws Exception;
 
 	List<VeicoliDTO> list(String tipoVeicolo,

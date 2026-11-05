@@ -70,8 +70,9 @@ public class MotoImpl implements IMotoService{
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga().trim().toUpperCase()).build());
 
-		req.setIdVeicolo(moto.getVeicolo().getId());
-		Veicoli veicoloModificato = veicoliService.update(req);
+		//req.setIdVeicolo(moto.getVeicolo().getId());
+		Integer idVeicolo= moto.getVeicolo().getId();
+		Veicoli veicoloModificato = veicoliService.update(req, idVeicolo);
 
 		moto.setVeicolo(veicoloModificato);
 		motoRepository.save(moto);	

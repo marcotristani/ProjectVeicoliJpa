@@ -62,10 +62,10 @@ public class VeicoliImpl implements IVeicoliService{
 
 	@Transactional
 	@Override
-	public Veicoli update(VeicoliReq req) throws Exception {
+	public Veicoli update(VeicoliReq req, Integer idVeicolo) throws Exception {
 		log.debug("Update {}", req);
 
-		Veicoli v = veiR.findById(req.getIdVeicolo())
+		Veicoli v = veiR.findById(idVeicolo)
 		       .orElseThrow(() -> new AcademyException("veicolo-ntfnd"));
 		if(req.getIdColore()!= null) v.setColore(colR.findById(req.getIdColore())
 		        .orElseThrow(() -> new AcademyException("colore-ntfnd")));
