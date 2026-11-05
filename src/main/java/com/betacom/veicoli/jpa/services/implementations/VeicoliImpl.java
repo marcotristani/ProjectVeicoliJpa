@@ -1,5 +1,6 @@
 package com.betacom.veicoli.jpa.services.implementations;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -49,7 +50,12 @@ public class VeicoliImpl implements IVeicoliService{
 				.orElseThrow(() -> new AcademyException("tipocat-ntfnd")));
 		v.setTipoVeicolo(tipoVeicolo);
 		v.setModello(req.getModello());
-		v.setAnnoProduzione(req.getAnnoProduzione());
+		
+		if (req.getAnnoProduzione() < LocalDate.now().getYear()- 10 || req.getAnnoProduzione() > LocalDate.now().getYear())
+			throw new AcademyException("anno_invalid");
+		else
+			v.setAnnoProduzione(req.getAnnoProduzione());
+		
 		v.setNRuote(req.getNumeroRuote());
 		v.setDataInserimento(LocalDateTime.now());
 		return veiR.save(v);
@@ -71,7 +77,12 @@ public class VeicoliImpl implements IVeicoliService{
 		if(req.getTipoCategoriaID()!= null) v.setTipoCategoria(catR.findById(req.getTipoCategoriaID())
 				  .orElseThrow(() -> new AcademyException("tipocat-ntfnd")));
 		if(req.getModello()!= null) v.setModello(req.getModello());
-		if(req.getAnnoProduzione()!= null) v.setAnnoProduzione(req.getAnnoProduzione());
+		if(req.getAnnoProduzione()!= null) {
+			if (req.getAnnoProduzione() < LocalDate.now().getYear()- 10 || req.getAnnoProduzione() > LocalDate.now().getYear())
+				throw new AcademyException("anno_invalid");
+			else
+				v.setAnnoProduzione(req.getAnnoProduzione());
+		}
 		if(req.getNumeroRuote()!= null) v.setNRuote(req.getNumeroRuote());
 		return veiR.save(v);
 	}

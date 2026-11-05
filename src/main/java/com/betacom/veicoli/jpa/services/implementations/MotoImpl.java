@@ -40,23 +40,18 @@ public class MotoImpl implements IMotoService{
 	public void create(MotoReq req) throws Exception {
 		log.debug("Create {}", req);
 
-		// 1. targa: pulita e libera? (controllo prima di qualsiasi INSERT)
 		String targaPulita = req.getTarga().trim().toLowerCase();
 		if (targaRepository.existsByTarga(targaPulita))
 			throw new AcademyException("targa-fnd");
 
-		// 2. tipo veicolo "moto"
 		TipoVeicolo tipoVeicolo = tipoVeicoloRepository.findByTipo("moto");
 		if (tipoVeicolo == null)
 			throw new AcademyException("tipoveicolo-ntfnd");
 
-		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq
 		Veicoli veicolo = veicoliService.create(req, tipoVeicolo);
 
-		// 4. targa: salvata prima della moto (targa_id sta in moto)
 		Targa targa = targaService.create(TargaReq.builder().targa(targaPulita).build());
 
-		// 5. moto, collegata a padre e targa (lati owner)
 		Moto moto = new Moto();
 		moto.setCc(req.getCc());
 		moto.setVeicolo(veicolo);
@@ -72,11 +67,9 @@ public class MotoImpl implements IMotoService{
 				.orElseThrow(() -> new AcademyException("moto-ntfnd"));
 		if(req.getCc()!= null) moto.setCc(req.getCc());
 		
-		// targa: la aggiorna TargaImpl (id della targa collegata + testo nuovo)
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga()).build());
 
-		// padre: idVeicolo lo recupero dalla moto
 		req.setIdVeicolo(moto.getVeicolo().getId());
 		Veicoli veicoloModificato = veicoliService.update(req);
 

@@ -2,6 +2,8 @@ package com.betacom.veicoli.jpa.dto.input;
 
 
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -38,6 +40,8 @@ public class VeicoliReq {
 	private Integer  annoProduzione;
 
 	@NotNull(groups = ValidationGroup.Create.class, message = "nr-ntfnd")
+	@Min(value = 2, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
+	@Max(value = 6, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
 	private Integer  numeroRuote;
 	
 	

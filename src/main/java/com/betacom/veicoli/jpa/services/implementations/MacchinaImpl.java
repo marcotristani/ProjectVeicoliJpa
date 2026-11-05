@@ -44,12 +44,10 @@ public class MacchinaImpl implements IMacchinaService {
 	public void create(MacchinaReq req) throws Exception {
 		log.debug("Creazione macchina {}", req);
 
-		// 1. targa: pulita e libera? (controllo prima di qualsiasi INSERT)
 		String targa = req.getTarga().trim().toLowerCase();
 		if (targaR.existsByTarga(targa))
 			throw new AcademyException("targa-fnd");
 
-		// 2. tipo veicolo "macchina"
 		
 		TipoVeicolo tipoVeicolo;
 		if(tipoveicoloR.existsByTipo("macchina"))
@@ -57,14 +55,10 @@ public class MacchinaImpl implements IMacchinaService {
 		else
 			throw new AcademyException("tipoveicolo-ntfnd");
 
-		// 3. padre: lo crea VeicoliImpl con i campi ereditati da VeicoliReq (req È
-		// anche una VeicoliReq)
 		Veicoli veicolo = veicoliS.create(req, tipoVeicolo);
 
-		// 4. targa: salvata prima della macchina (targa_id sta in macchine)
 		Targa t = targaService.create(TargaReq.builder().targa(targa).build());
 
-		// 5. macchina, collegata a padre e targa (lati owner)
 		Macchina m = new Macchina();
 		m.setCc(req.getCc());
 		m.setPorte(req.getNumeroPorte());
@@ -80,12 +74,10 @@ public class MacchinaImpl implements IMacchinaService {
 		Macchina mac = macR.findById(req.getIdMacchina()).orElseThrow(() -> new AcademyException("macchina-ntfnd"));
 
 		
-		// 2. dati della macchina (solo se arrivati)
 		Optional.ofNullable(req.getCc()).ifPresent(mac::setCc);
 		Optional.ofNullable(req.getNumeroPorte()).ifPresent(mac::setPorte);
 
 		
-		// 3. targa: la aggiorna TargaImpl (id della targa collegata + testo nuovo)
 		if (req.getTarga() != null)
 			targaService.update(TargaReq.builder().id(mac.getTarga().getId()).targa(req.getTarga()).build());
 		
