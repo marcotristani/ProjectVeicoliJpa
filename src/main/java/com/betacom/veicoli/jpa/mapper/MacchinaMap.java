@@ -15,16 +15,21 @@ public class MacchinaMap {
                 .cc(mac.getCc())
                 .numeroPorte(mac.getPorte())
                 .idTipoVeicolo(v.getTipoVeicolo().getId())
+                .tipoVeicolo(v.getTipoVeicolo().getTipo())
                 .annoProduzione(v.getAnnoProduzione())
                 .tipoCategoriaId(v.getTipoCategoria().getId())
+                .tipoCategoria(v.getTipoCategoria().getNome())
                 .idColore(v.getColore().getId())
+                .nomeColore(v.getColore().getNome())
                 .idMarca(v.getMarca().getId())
+                .nomeMarca(v.getMarca().getNome())
                 .numeroRuote(v.getNRuote())
                 .data_inserimento(v.getDataInserimento())
                 .modello(v.getModello())
                 .TipoAlimentazioneId(v.getTipoAlimentazione().getId())
-                .targa(mac.getTarga().getTarga()) // oggetto Targa collegato → il suo testo ("el234gx")
-                .idVeicolo(v.getId())             // padre Veicoli collegato → il suo id (1)
+                .tipoAlimentazione(v.getTipoAlimentazione().getNome())
+                .targa(mac.getTarga().getTarga()) 
+                .idVeicolo(v.getId())             
                 .build();
     }
 

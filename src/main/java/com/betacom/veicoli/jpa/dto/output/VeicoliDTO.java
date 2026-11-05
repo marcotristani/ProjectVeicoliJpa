@@ -19,27 +19,29 @@ import lombok.SuperBuilder;
 public class VeicoliDTO {
 	private Integer  id;
 	private Integer  idTipoVeicolo;
+	private String tipoVeicolo;
 	private Integer  tipoCategoriaId;
+	private String tipoCategoria;
 	private Integer  idMarca;
+	private String nomeMarca;
 	private String   modello;
 	private Integer  TipoAlimentazioneId;
+	private String tipoAlimentazione;
 	private Integer  idColore;
+	private String nomeColore;
 	private Integer  annoProduzione;
 	private LocalDateTime   data_inserimento;
 	private Integer  numeroRuote;
 	
-	private Integer idFreno;
-    private Integer idTipoSospensione;
-    private Integer numeroCorone;
-    private Integer numeroMarce;
-    private Boolean pieghevole;
-    
-    private Integer ccMoto;
-    private String targaMoto;
-    
-    private Integer nPorte;
-    private Integer ccMacchina;
-    private String targaMacchina;
+	/*
+	 * private Integer idFreno; private Integer idTipoSospensione; private Integer
+	 * numeroCorone; private Integer numeroMarce; private Boolean pieghevole;
+	 * 
+	 * private Integer ccMoto; private String targaMoto;
+	 * 
+	 * private Integer nPorte; private Integer ccMacchina; private String
+	 * targaMacchina;
+	 */
     
 	
 }

@@ -20,8 +20,8 @@ public class MacchinaReq extends VeicoliReq {
 	private String targa;
 	
 	@NotNull(groups = ValidationGroup.Create.class, message = "np-ntfnd")
-	@Min(value = 2, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
-	@Max(value = 6, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "ruote_invalid")
+	@Min(value = 2, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "porte-invalid")
+	@Max(value = 6, groups = {ValidationGroup.Create.class, ValidationGroup.Update.class}, message = "porte-invalid")
 	private Integer numeroPorte;
 	
 	

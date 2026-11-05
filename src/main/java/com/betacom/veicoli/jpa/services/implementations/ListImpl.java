@@ -3,7 +3,6 @@ package com.betacom.veicoli.jpa.services.implementations;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.betacom.veicoli.jpa.dto.output.VeicoliDTO;
