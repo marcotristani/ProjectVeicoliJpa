@@ -56,6 +56,9 @@ public class TipoAlimentazioneImpl implements ITipoAlimentazioneService{
 		log.debug("Delete {}", id);	
 		TipoAlimentazione alim = tipoAlimR.findById(id)
 				.orElseThrow(() -> new AcademyException("tipoalim-ntfnd"));
+		
+		if (!alim.getVeicoli().isEmpty()) throw new AcademyException("alimentazione-con-veicoli");
+
 		tipoAlimR.delete(alim);
 	}
 
