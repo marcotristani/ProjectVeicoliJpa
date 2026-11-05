@@ -40,7 +40,7 @@ public class MotoImpl implements IMotoService{
 	public void create(MotoReq req) throws Exception {
 		log.debug("Create {}", req);
 
-		String targaPulita = req.getTarga().trim().toLowerCase();
+		String targaPulita = req.getTarga().trim().toUpperCase();
 		if (targaRepository.existsByTarga(targaPulita))
 			throw new AcademyException("targa-fnd");
 
@@ -68,7 +68,7 @@ public class MotoImpl implements IMotoService{
 		if(req.getCc()!= null) moto.setCc(req.getCc());
 		
 		if (req.getTarga() != null)
-			targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga()).build());
+			targaService.update(TargaReq.builder().id(moto.getTarga().getId()).targa(req.getTarga().trim().toUpperCase()).build());
 
 		req.setIdVeicolo(moto.getVeicolo().getId());
 		Veicoli veicoloModificato = veicoliService.update(req);
