@@ -15,7 +15,9 @@ public class BiciDTO extends VeicoliDTO{
 	
 	private Integer id;
 	private Integer idTipoSospensione;
+	private String tipoSospensione;
 	private Integer idFreno;
+	private String tipoFreno;
 	private Integer numeroMarce;
 	private Integer numeroCorone;
 	private Boolean pieghevole;
